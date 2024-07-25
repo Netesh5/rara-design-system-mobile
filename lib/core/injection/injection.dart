@@ -6,5 +6,6 @@ final g = GetIt.instance;
 class DI {
   static init() async {
     await ThemeInjector.init();
+    await ThemeInjector.init();
   }
 }
