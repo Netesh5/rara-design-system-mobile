@@ -101,6 +101,7 @@ class _ThemeWrapperState extends State<ThemeWrapper> {
       child: BlocBuilder<ThemeCubit, ThemeData>(
         builder: (context, appTheme) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: appTheme,
             home: widget.child,
           );
