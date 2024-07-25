@@ -7,6 +7,8 @@ class ThemeInjector {
   static init() {
     g.registerFactory<LightColors>(() => LightColors());
     g.registerFactory<DarkColors>(() => DarkColors());
-    g.registerFactory<ThemeCubit>(() => ThemeCubit());
+    g.registerFactory<ThemeCubit>(() => ThemeCubit(
+          themePrefs: g(),
+        ));
   }
 }
