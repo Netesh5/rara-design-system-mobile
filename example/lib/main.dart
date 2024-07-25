@@ -5,6 +5,7 @@ import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/rara_design_system.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await DI.init();
   runApp(const MyApp());
 }
