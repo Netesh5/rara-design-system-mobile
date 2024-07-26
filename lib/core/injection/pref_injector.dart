@@ -5,8 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class PrefInjector {
   static init() async {
     final sharedPreferences = await SharedPreferences.getInstance();
-    g.registerSingleton<SharedPreferences>(sharedPreferences);
+    rg.registerSingleton<SharedPreferences>(sharedPreferences);
 
-    g.registerLazySingleton<ThemePrefs>(() => ThemePrefs(preferences: g()));
+    rg.registerLazySingleton<ThemePrefs>(() => ThemePrefs(preferences: rg()));
   }
 }

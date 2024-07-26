@@ -1,12 +1,17 @@
 import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/theme/cubit/theme_cubit.dart';
 import 'package:rara_design_system/core/theme/dark_colors.dart';
+import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/theme/light_colors.dart';
+import 'package:rara_design_system/core/theme/theme.dart';
 
 class ThemeInjector {
-  static init() {
-    g.registerFactory<LightColors>(() => LightColors());
-    g.registerFactory<DarkColors>(() => DarkColors());
-    g.registerFactory<ThemeCubit>(() => ThemeCubit(themePrefs: g()));
+  static init({LightColors? lightColors, DarkColors? darkColors}) {
+    rg.registerFactory<LightColors>(() => lightColors ?? LightColors());
+    rg.registerFactory<ITheme>(() => AppTheme());
+    rg.registerFactory<DarkColors>(() => darkColors ?? DarkColors());
+    rg.registerFactory<ThemeCubit>(() => ThemeCubit(
+          themePrefs: rg(),
+        ));
   }
 }

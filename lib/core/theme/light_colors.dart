@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
+
 import 'package:rara_design_system/core/theme/interface/icolors.dart';
 
 class LightColors implements IColors {
@@ -170,4 +172,92 @@ class LightColors implements IColors {
 
   @override
   Color get textSecondary => textSecondaryOverride ?? const Color(0xffDCEBF9);
+
+  LightColors copyWith({
+    Color? borderActiveOverride,
+    Color? borderElementsOverride,
+    Color? borderLayoutOverride,
+    Color? brandPrimaryOverride,
+    Color? brandSecondaryOverride,
+    Color? feedbackInformativeBackgroundOverride,
+    Color? feedbackInformativePrimaryOverride,
+    Color? feedbackSuccessBackgroundOverride,
+    Color? feedbackSuccessPrimaryOverride,
+    Color? feedbackWarningBackgroundOverride,
+    Color? feedbackWarningPrimaryOverride,
+    Color? iconDisabledOverride,
+    Color? iconOnColorOverride,
+    Color? iconPrimaryOverride,
+    Color? iconSecondaryOverride,
+    Color? interactiveCriticalBackgroundOverride,
+    Color? interactiveCriticalDepressedOverride,
+    Color? interactiveCriticalPrimaryOverride,
+    Color? interactiveDefaultBackgroundOverride,
+    Color? interactiveDefaultDepressedOverride,
+    Color? interactiveDefaultPrimaryOverride,
+    Color? surfaceBackgroundOverride,
+    Color? surfaceDisabledOverride,
+    Color? surfaceLayoutOverride,
+    Color? surfaceMutedOverride,
+    Color? textDisabledOverride,
+    Color? textOnColorOverride,
+    Color? textPrimaryOverride,
+    Color? textSecondaryOverride,
+  }) {
+    return LightColors(
+      borderActiveOverride: borderActiveOverride ?? this.borderActiveOverride,
+      borderElementsOverride:
+          borderElementsOverride ?? this.borderElementsOverride,
+      borderLayoutOverride: borderLayoutOverride ?? this.borderLayoutOverride,
+      brandPrimaryOverride: brandPrimaryOverride ?? this.brandPrimaryOverride,
+      brandSecondaryOverride:
+          brandSecondaryOverride ?? this.brandSecondaryOverride,
+      feedbackInformativeBackgroundOverride:
+          feedbackInformativeBackgroundOverride ??
+              this.feedbackInformativeBackgroundOverride,
+      feedbackInformativePrimaryOverride: feedbackInformativePrimaryOverride ??
+          this.feedbackInformativePrimaryOverride,
+      feedbackSuccessBackgroundOverride: feedbackSuccessBackgroundOverride ??
+          this.feedbackSuccessBackgroundOverride,
+      feedbackSuccessPrimaryOverride:
+          feedbackSuccessPrimaryOverride ?? this.feedbackSuccessPrimaryOverride,
+      feedbackWarningBackgroundOverride: feedbackWarningBackgroundOverride ??
+          this.feedbackWarningBackgroundOverride,
+      feedbackWarningPrimaryOverride:
+          feedbackWarningPrimaryOverride ?? this.feedbackWarningPrimaryOverride,
+      iconDisabledOverride: iconDisabledOverride ?? this.iconDisabledOverride,
+      iconOnColorOverride: iconOnColorOverride ?? this.iconOnColorOverride,
+      iconPrimaryOverride: iconPrimaryOverride ?? this.iconPrimaryOverride,
+      iconSecondaryOverride:
+          iconSecondaryOverride ?? this.iconSecondaryOverride,
+      interactiveCriticalBackgroundOverride:
+          interactiveCriticalBackgroundOverride ??
+              this.interactiveCriticalBackgroundOverride,
+      interactiveCriticalDepressedOverride:
+          interactiveCriticalDepressedOverride ??
+              this.interactiveCriticalDepressedOverride,
+      interactiveCriticalPrimaryOverride: interactiveCriticalPrimaryOverride ??
+          this.interactiveCriticalPrimaryOverride,
+      interactiveDefaultBackgroundOverride:
+          interactiveDefaultBackgroundOverride ??
+              this.interactiveDefaultBackgroundOverride,
+      interactiveDefaultDepressedOverride:
+          interactiveDefaultDepressedOverride ??
+              this.interactiveDefaultDepressedOverride,
+      interactiveDefaultPrimaryOverride: interactiveDefaultPrimaryOverride ??
+          this.interactiveDefaultPrimaryOverride,
+      surfaceBackgroundOverride:
+          surfaceBackgroundOverride ?? this.surfaceBackgroundOverride,
+      surfaceDisabledOverride:
+          surfaceDisabledOverride ?? this.surfaceDisabledOverride,
+      surfaceLayoutOverride:
+          surfaceLayoutOverride ?? this.surfaceLayoutOverride,
+      surfaceMutedOverride: surfaceMutedOverride ?? this.surfaceMutedOverride,
+      textDisabledOverride: textDisabledOverride ?? this.textDisabledOverride,
+      textOnColorOverride: textOnColorOverride ?? this.textOnColorOverride,
+      textPrimaryOverride: textPrimaryOverride ?? this.textPrimaryOverride,
+      textSecondaryOverride:
+          textSecondaryOverride ?? this.textSecondaryOverride,
+    );
+  }
 }

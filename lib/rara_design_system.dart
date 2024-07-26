@@ -6,9 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/theme/cubit/theme_cubit.dart';
+import 'package:rara_design_system/core/theme/dark_colors.dart';
+import 'package:rara_design_system/core/theme/light_colors.dart';
 
 class ThemeWrapper extends StatelessWidget {
   final Widget child;
+  final LightColors? lightColors;
+  final DarkColors? darkColors;
   final GlobalKey<NavigatorState>? navigatorKey;
   final GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey;
   final Widget? home;
@@ -77,13 +81,15 @@ class ThemeWrapper extends StatelessWidget {
     this.scrollBehavior,
     this.themeAnimationStyle,
     this.localeListResolutionCallback,
+    this.lightColors,
+    this.darkColors,
   });
 
   // intializeDI() async {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => g<ThemeCubit>()..init(),
+      create: (_) => rg<ThemeCubit>()..init(),
       child: BlocBuilder<ThemeCubit, ThemeData>(
         builder: (context, appTheme) {
           return MaterialApp(

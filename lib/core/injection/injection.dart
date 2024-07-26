@@ -1,12 +1,14 @@
 import 'package:get_it/get_it.dart';
 import 'package:rara_design_system/core/injection/pref_injector.dart';
 import 'package:rara_design_system/core/injection/theme_injector.dart';
+import 'package:rara_design_system/core/theme/dark_colors.dart';
+import 'package:rara_design_system/core/theme/light_colors.dart';
 
-final g = GetIt.instance;
+final rg = GetIt.instance;
 
-class DI {
-  static init() async {
+class RaraDI {
+  static init({LightColors? lightColors, DarkColors? darkColors}) async {
     await PrefInjector.init();
-    await ThemeInjector.init();
+    await ThemeInjector.init(lightColors: lightColors, darkColors: darkColors);
   }
 }
