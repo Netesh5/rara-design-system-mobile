@@ -9,7 +9,7 @@ import 'package:rara_design_system/core/theme/cubit/theme_cubit.dart';
 import 'package:rara_design_system/core/theme/dark_colors.dart';
 import 'package:rara_design_system/core/theme/light_colors.dart';
 
-class ThemeWrapper extends StatelessWidget {
+class RaraApp extends StatelessWidget {
   final Widget child;
   final LightColors? lightColors;
   final DarkColors? darkColors;
@@ -54,7 +54,7 @@ class ThemeWrapper extends StatelessWidget {
   final ScrollBehavior? scrollBehavior;
   final bool useInheritedMediaQuery = false;
   final AnimationStyle? themeAnimationStyle;
-  const ThemeWrapper({
+  const RaraApp({
     super.key,
     required this.child,
     this.navigatorKey,
