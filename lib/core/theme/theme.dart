@@ -17,7 +17,13 @@ class AppTheme extends ITheme {
         appBarTheme: AppBarTheme(
           elevation: 0,
           color: lightColors.surfaceLayout,
-          iconTheme: const IconThemeData(),
+          iconTheme: IconThemeData(
+            color: lightColors.iconPrimary,
+          ),
+          titleTextStyle: TextStyle(
+            color: lightColors.textPrimary,
+            fontSize: 20,
+          ),
         ),
         dividerColor: lightColors.borderElements,
         iconTheme: IconThemeData(

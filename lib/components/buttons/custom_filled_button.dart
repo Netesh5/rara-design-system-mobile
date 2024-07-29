@@ -26,6 +26,7 @@ class CustomFilledButton extends StatelessWidget {
   final Color? backgroundColor;
   final ButtonSize? buttonSize;
   final ButtonState? buttonState;
+  final double borderRadius;
 
   final int? flex;
   const CustomFilledButton({
@@ -50,6 +51,7 @@ class CustomFilledButton extends StatelessWidget {
     this.backgroundColor,
     this.buttonSize,
     this.buttonState,
+    this.borderRadius = 4,
   });
 
   @override
@@ -62,8 +64,11 @@ class CustomFilledButton extends StatelessWidget {
       child: Container(
         height: buttonSize?.height ?? height,
         width: buttonSize?.width ?? width,
-        color: buttonState?.color ??
-            (fillColor ?? colors.interactiveDefaultPrimary),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          color: buttonState?.color ??
+              (fillColor ?? colors.interactiveDefaultPrimary),
+        ),
         child: AbsorbPointer(
           absorbing: disabled,
           child: InkWell(

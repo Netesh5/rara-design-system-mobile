@@ -26,6 +26,7 @@ class CustomOutlineButton extends StatelessWidget {
   final ButtonSize? buttonSize;
   final ButtonState? buttonState;
   final Color? borderColor;
+  final double borderRadius;
 
   final int? flex;
   const CustomOutlineButton({
@@ -49,6 +50,7 @@ class CustomOutlineButton extends StatelessWidget {
     this.buttonSize,
     this.buttonState,
     this.borderColor,
+    this.borderRadius = 4,
   });
 
   @override
@@ -63,8 +65,9 @@ class CustomOutlineButton extends StatelessWidget {
         width: buttonSize?.width ?? width,
         decoration: BoxDecoration(
             border: Border.all(
-          color: borderColor ?? colors.interactiveDefaultPrimary,
-        )),
+              color: borderColor ?? colors.interactiveDefaultPrimary,
+            ),
+            borderRadius: BorderRadius.circular(borderRadius)),
         child: AbsorbPointer(
           absorbing: disabled,
           child: InkWell(
