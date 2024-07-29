@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_syntax_view/flutter_syntax_view.dart';
 import 'package:rara_design_system/components/buttons/custom_filled_button.dart';
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
+import 'package:rara_design_system/core/extension/build_context_extension.dart';
 import 'package:rara_design_system/core/services/navigation_service/navigation_service.dart';
 
 customBottomSheet(BuildContext context, String code) {
@@ -30,7 +31,9 @@ class _CustomBottomSheet extends StatelessWidget {
               fontSize: 16,
               code: code,
               syntax: Syntax.DART,
-              syntaxTheme: SyntaxTheme.vscodeDark(),
+              syntaxTheme: context.isDarkMode
+                  ? SyntaxTheme.vscodeDark()
+                  : SyntaxTheme.vscodeLight(),
               withZoom: false,
             ),
           ),
