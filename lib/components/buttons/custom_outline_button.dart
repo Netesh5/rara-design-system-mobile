@@ -97,12 +97,10 @@ class CustomOutlineButton extends StatelessWidget {
                                   fontSize: 14.wp,
                                   color: disabled
                                       ? colors.textDisabled
-                                      : colors.textOnColor,
+                                      : borderColor,
                                 ))
                             .copyWith(
-                          color: disabled
-                              ? colors.textDisabled
-                              : colors.textOnColor,
+                          color: disabled ? colors.textDisabled : borderColor,
                         ),
                       ),
                     ],

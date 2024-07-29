@@ -13,7 +13,7 @@ class AppTheme extends ITheme {
         useMaterial3: false,
         fontFamily: "Inter",
         brightness: Brightness.light,
-        scaffoldBackgroundColor: lightColors.interactiveDefaultBackground,
+        scaffoldBackgroundColor: lightColors.interactiveDefaultSecondary,
         appBarTheme: AppBarTheme(
           elevation: 0,
           color: lightColors.surfaceLayout,

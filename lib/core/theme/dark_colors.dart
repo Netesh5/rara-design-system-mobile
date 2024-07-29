@@ -11,6 +11,7 @@ class DarkColors implements IColors {
   final Color? surfaceLayoutOverride;
   final Color? surfaceMutedOverride;
   final Color? surfaceDisabledOverride;
+  final Color? sufaceHighlightOverride;
 
   final Color? textPrimaryOverride;
   final Color? textSecondaryOverride;
@@ -38,7 +39,7 @@ class DarkColors implements IColors {
   final Color? feedbackWarningBackgroundOverride;
 
   final Color? feedbackSuccessPrimaryOverride;
-  final Color? feedbackSuccessBackgroundOverride;
+  final Color? feedbackSuccessSecondaryOverride;
 
   final Color? feedbackInformativePrimaryOverride;
   final Color? feedbackInformativeBackgroundOverride;
@@ -70,19 +71,20 @@ class DarkColors implements IColors {
     this.feedbackWarningPrimaryOverride,
     this.feedbackWarningBackgroundOverride,
     this.feedbackSuccessPrimaryOverride,
-    this.feedbackSuccessBackgroundOverride,
+    this.feedbackSuccessSecondaryOverride,
     this.feedbackInformativePrimaryOverride,
     this.feedbackInformativeBackgroundOverride,
+    this.sufaceHighlightOverride,
   });
 
   @override
-  Color get borderActive => borderActiveOverride ?? const Color(0xffFF0000);
+  Color get borderActive => borderActiveOverride ?? const Color(0xff4FC3F7);
 
   @override
-  Color get borderElements => borderElementsOverride ?? const Color(0xff5C5C5C);
+  Color get borderElements => borderElementsOverride ?? const Color(0xff666666);
 
   @override
-  Color get borderLayout => borderLayoutOverride ?? const Color(0xff333333);
+  Color get borderLayout => borderLayoutOverride ?? const Color(0xff757575);
 
   @override
   Color get brandPrimary => brandPrimaryOverride ?? const Color(0xffFF0000);
@@ -91,43 +93,43 @@ class DarkColors implements IColors {
   Color get brandSecondary => brandSecondaryOverride ?? const Color(0xff154096);
 
   @override
-  Color get feedbackInformativeBackground =>
-      feedbackInformativeBackgroundOverride ?? const Color(0xffDCEBF9);
+  Color get feedbackInformativeSecondary =>
+      feedbackInformativeBackgroundOverride ?? const Color(0xffF1F5FD);
 
   @override
   Color get feedbackInformativePrimary =>
-      feedbackInformativePrimaryOverride ?? const Color(0xff2F85DA);
+      feedbackInformativePrimaryOverride ?? const Color(0xff143E9F);
 
   @override
-  Color get feedbackSuccessBackground =>
-      feedbackSuccessBackgroundOverride ?? const Color(0xffD7F4D8);
+  Color get feedbackSuccessSecondary =>
+      feedbackSuccessSecondaryOverride ?? const Color(0xffECFDF3);
 
   @override
   Color get feedbackSuccessPrimary =>
-      feedbackSuccessPrimaryOverride ?? const Color(0xff35C03C);
+      feedbackSuccessPrimaryOverride ?? const Color(0xff008060);
 
   @override
-  Color get feedbackWarningBackground =>
-      feedbackWarningBackgroundOverride ?? const Color(0xffFDF3E2);
+  Color get feedbackWarningSecondary =>
+      feedbackWarningBackgroundOverride ?? const Color(0xffFFF5EA);
 
   @override
   Color get feedbackWarningPrimary =>
-      feedbackWarningPrimaryOverride ?? const Color(0xffF2B045);
+      feedbackWarningPrimaryOverride ?? const Color(0xffFFC453);
 
   @override
-  Color get iconDisabled => iconDisabledOverride ?? const Color(0xffE0E0E0);
+  Color get iconDisabled => iconDisabledOverride ?? const Color(0xffAAAAAA);
 
   @override
   Color get iconOnColor => iconOnColorOverride ?? const Color(0xffFFFFFF);
 
   @override
-  Color get iconPrimary => iconPrimaryOverride ?? const Color(0xffEEEEEE);
+  Color get iconPrimary => iconPrimaryOverride ?? const Color(0xffFFFFFF);
 
   @override
-  Color get iconSecondary => iconSecondaryOverride ?? const Color(0xffE0E0E0);
+  Color get iconSecondary => iconSecondaryOverride ?? const Color(0xffCCCCCC);
 
   @override
-  Color get interactiveCriticalBackground =>
+  Color get interactiveCriticalSecondary =>
       interactiveCriticalBackgroundOverride ?? const Color(0xff4A4A4A);
 
   @override
@@ -136,19 +138,19 @@ class DarkColors implements IColors {
 
   @override
   Color get interactiveCriticalPrimary =>
-      interactiveCriticalPrimaryOverride ?? const Color(0xffFF0000);
+      interactiveCriticalPrimaryOverride ?? const Color(0xffDF1C41);
 
   @override
-  Color get interactiveDefaultBackground =>
-      interactiveDefaultBackgroundOverride ?? const Color(0xffE0E0E0);
+  Color get interactiveDefaultSecondary =>
+      interactiveDefaultBackgroundOverride ?? const Color(0xffFDEDF0);
 
   @override
   Color get interactiveDefaultDepressed =>
-      interactiveDefaultDepressedOverride ?? const Color(0xffFFFFFF);
+      interactiveDefaultDepressedOverride ?? const Color(0xffFF0030);
 
   @override
   Color get interactiveDefaultPrimary =>
-      interactiveDefaultPrimaryOverride ?? const Color(0xff666666);
+      interactiveDefaultPrimaryOverride ?? const Color(0xff03A9F4);
 
   @override
   Color get surfaceBackground =>
@@ -156,25 +158,28 @@ class DarkColors implements IColors {
 
   @override
   Color get surfaceDisabled =>
-      surfaceDisabledOverride ?? const Color(0xff60646C);
+      surfaceDisabledOverride ?? const Color(0xff757575);
 
   @override
-  Color get surfaceLayout => surfaceLayoutOverride ?? const Color(0xff242424);
+  Color get surfaceLayout => surfaceLayoutOverride ?? const Color(0xff212121);
 
   @override
-  Color get surfaceMuted => surfaceMutedOverride ?? const Color(0xff303236);
+  Color get surfaceMuted => surfaceMutedOverride ?? const Color(0xff333333);
 
   @override
-  Color get textDisabled => textDisabledOverride ?? const Color(0xffE0E0E0);
+  Color get surfaceHighlight => surfaceMutedOverride ?? const Color(0xff1E1E1E);
+
+  @override
+  Color get textDisabled => textDisabledOverride ?? const Color(0xffAAAAAA);
 
   @override
   Color get textOnColor => textOnColorOverride ?? const Color(0xffFFFFFF);
 
   @override
-  Color get textPrimary => textPrimaryOverride ?? const Color(0xffFDFDFD);
+  Color get textPrimary => textPrimaryOverride ?? const Color(0xffFFFFFF);
 
   @override
-  Color get textSecondary => textSecondaryOverride ?? const Color(0xffA4A4A4);
+  Color get textSecondary => textSecondaryOverride ?? const Color(0xffCCCCCC);
 
   DarkColors copyWith({
     Color? brandPrimaryOverride,
@@ -206,6 +211,7 @@ class DarkColors implements IColors {
     Color? feedbackSuccessBackgroundOverride,
     Color? feedbackInformativePrimaryOverride,
     Color? feedbackInformativeBackgroundOverride,
+    Color? sufaceHighlightOverride,
   }) {
     return DarkColors(
       brandPrimaryOverride: brandPrimaryOverride ?? this.brandPrimaryOverride,
@@ -254,13 +260,15 @@ class DarkColors implements IColors {
           this.feedbackWarningBackgroundOverride,
       feedbackSuccessPrimaryOverride:
           feedbackSuccessPrimaryOverride ?? this.feedbackSuccessPrimaryOverride,
-      feedbackSuccessBackgroundOverride: feedbackSuccessBackgroundOverride ??
-          this.feedbackSuccessBackgroundOverride,
+      feedbackSuccessSecondaryOverride:
+          feedbackSuccessBackgroundOverride ?? feedbackSuccessSecondaryOverride,
       feedbackInformativePrimaryOverride: feedbackInformativePrimaryOverride ??
           this.feedbackInformativePrimaryOverride,
       feedbackInformativeBackgroundOverride:
           feedbackInformativeBackgroundOverride ??
               this.feedbackInformativeBackgroundOverride,
+      sufaceHighlightOverride:
+          sufaceHighlightOverride ?? this.sufaceHighlightOverride,
     );
   }
 }

@@ -25,21 +25,22 @@ abstract interface class IColors {
   final Color iconOnColor;
 
   final Color interactiveDefaultPrimary;
-  final Color interactiveDefaultBackground;
+  final Color interactiveDefaultSecondary;
   final Color interactiveDefaultDepressed;
 
   final Color interactiveCriticalPrimary;
-  final Color interactiveCriticalBackground;
+  final Color interactiveCriticalSecondary;
   final Color interactiveCriticalDepressed;
 
   final Color feedbackWarningPrimary;
-  final Color feedbackWarningBackground;
+  final Color feedbackWarningSecondary;
 
   final Color feedbackSuccessPrimary;
-  final Color feedbackSuccessBackground;
+  final Color feedbackSuccessSecondary;
 
   final Color feedbackInformativePrimary;
-  final Color feedbackInformativeBackground;
+  final Color feedbackInformativeSecondary;
+  final Color surfaceHighlight;
 
   IColors({
     required this.brandPrimary,
@@ -60,16 +61,17 @@ abstract interface class IColors {
     required this.iconDisabled,
     required this.iconOnColor,
     required this.interactiveDefaultPrimary,
-    required this.interactiveDefaultBackground,
+    required this.interactiveDefaultSecondary,
     required this.interactiveDefaultDepressed,
     required this.interactiveCriticalPrimary,
-    required this.interactiveCriticalBackground,
+    required this.interactiveCriticalSecondary,
     required this.interactiveCriticalDepressed,
     required this.feedbackWarningPrimary,
-    required this.feedbackWarningBackground,
+    required this.feedbackWarningSecondary,
     required this.feedbackSuccessPrimary,
-    required this.feedbackSuccessBackground,
+    required this.feedbackSuccessSecondary,
     required this.feedbackInformativePrimary,
-    required this.feedbackInformativeBackground,
+    required this.feedbackInformativeSecondary,
+    required this.surfaceHighlight,
   });
 }
