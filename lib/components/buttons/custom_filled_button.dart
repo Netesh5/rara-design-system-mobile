@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rara_design_system/core/animations/tap_effect.dart';
 import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
+import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/buttons_size_enum.dart';
 import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
 
-class CustomFilledButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final IconData? prefixIcon;
   final Color? prefixColor;
   final IconData? suffixIcon;
@@ -27,9 +28,11 @@ class CustomFilledButton extends StatelessWidget {
   final ButtonSize? buttonSize;
   final ButtonState? buttonState;
   final double borderRadius;
+  final ButtonVarient? buttonVarient;
+  final Color? borderColor;
 
   final int? flex;
-  const CustomFilledButton({
+  const CustomButton({
     super.key,
     required this.title,
     this.titleStyle,
@@ -43,7 +46,7 @@ class CustomFilledButton extends StatelessWidget {
     this.containerPadding,
     this.flex = 1,
     this.showShadow = true,
-    this.iconSize = 24,
+    this.iconSize = 20,
     this.disabled = false,
     this.enableTapEffect = true,
     this.height = 36,
@@ -52,6 +55,8 @@ class CustomFilledButton extends StatelessWidget {
     this.buttonSize,
     this.buttonState,
     this.borderRadius = 4,
+    this.buttonVarient,
+    this.borderColor,
   });
 
   @override
@@ -66,8 +71,17 @@ class CustomFilledButton extends StatelessWidget {
         width: buttonSize?.width ?? width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
-          color: buttonState?.color ??
-              (fillColor ?? colors.interactiveDefaultPrimary),
+          border: buttonVarient == ButtonVarient.outline
+              ? Border.all(
+                  color: borderColor ??
+                      buttonState?.color ??
+                      colors.interactiveDefaultPrimary,
+                )
+              : null,
+          color: buttonVarient == ButtonVarient.filled
+              ? buttonState?.color ??
+                  (fillColor ?? colors.interactiveDefaultPrimary)
+              : null,
         ),
         child: AbsorbPointer(
           absorbing: disabled,
@@ -87,7 +101,12 @@ class CustomFilledButton extends StatelessWidget {
                       child: Icon(
                         prefixIcon,
                         size: iconSize,
-                        color: disabled ? colors.surfaceDisabled : prefixColor,
+                        color: disabled
+                            ? colors.iconDisabled
+                            : suffixColor ??
+                                (buttonVarient != ButtonVarient.filled
+                                    ? buttonState?.color
+                                    : colors.iconOnColor),
                       ),
                     ),
                   Column(
@@ -101,12 +120,16 @@ class CustomFilledButton extends StatelessWidget {
                                   fontSize: 14.wp,
                                   color: disabled
                                       ? colors.textDisabled
-                                      : colors.textOnColor,
+                                      : buttonVarient != ButtonVarient.filled
+                                          ? buttonState?.color
+                                          : colors.textOnColor,
                                 ))
                             .copyWith(
                           color: disabled
                               ? colors.textDisabled
-                              : colors.textOnColor,
+                              : buttonVarient != ButtonVarient.filled
+                                  ? buttonState?.color
+                                  : colors.textOnColor,
                         ),
                       ),
                     ],
@@ -117,7 +140,12 @@ class CustomFilledButton extends StatelessWidget {
                       child: Icon(
                         suffixIcon,
                         size: iconSize,
-                        color: disabled ? colors.iconDisabled : suffixColor,
+                        color: disabled
+                            ? colors.iconDisabled
+                            : suffixColor ??
+                                (buttonVarient != ButtonVarient.filled
+                                    ? buttonState?.color
+                                    : colors.iconOnColor),
                       ),
                     ),
                 ],

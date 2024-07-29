@@ -1,4 +1,4 @@
-import 'package:example/pages/home_page.dart';
+import 'package:example/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/services/navigation_service/navigation_service.dart';

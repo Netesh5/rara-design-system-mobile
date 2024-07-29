@@ -13,7 +13,7 @@ class AppTheme extends ITheme {
         useMaterial3: false,
         fontFamily: "Inter",
         brightness: Brightness.light,
-        scaffoldBackgroundColor: lightColors.interactiveDefaultSecondary,
+        scaffoldBackgroundColor: lightColors.surfaceLayout,
         appBarTheme: AppBarTheme(
           elevation: 0,
           color: lightColors.surfaceLayout,
@@ -27,7 +27,8 @@ class AppTheme extends ITheme {
         ),
         dividerColor: lightColors.borderElements,
         iconTheme: IconThemeData(
-          color: lightColors.iconPrimary,
+          color: lightColors.iconOnColor,
+          size: 20,
         ),
         cardColor: lightColors.surfaceBackground,
         dialogBackgroundColor: lightColors.surfaceBackground,
@@ -62,7 +63,7 @@ class AppTheme extends ITheme {
         useMaterial3: false,
         fontFamily: "Inter",
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: darkColors.surfaceBackground,
+        scaffoldBackgroundColor: darkColors.surfaceLayout,
         dividerColor: darkColors.borderElements,
         dialogBackgroundColor: darkColors.surfaceBackground,
         cardColor: darkColors.surfaceLayout,
