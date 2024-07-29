@@ -6,14 +6,13 @@ import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
 
-class CustomFilledButton extends StatelessWidget {
+class CustomOutlineButton extends StatelessWidget {
   final IconData? prefixIcon;
   final Color? prefixColor;
   final IconData? suffixIcon;
   final Color? suffixColor;
   final String title;
   final TextStyle? titleStyle;
-  final Color? fillColor;
   final VoidCallback? onPressed;
   final EdgeInsets? containerMargin;
   final EdgeInsets? containerPadding;
@@ -23,16 +22,16 @@ class CustomFilledButton extends StatelessWidget {
   final bool enableTapEffect;
   final double height;
   final double width;
-  final Color? backgroundColor;
+
   final ButtonSize? buttonSize;
   final ButtonState? buttonState;
+  final Color? borderColor;
 
   final int? flex;
-  const CustomFilledButton({
+  const CustomOutlineButton({
     super.key,
     required this.title,
     this.titleStyle,
-    this.fillColor,
     this.prefixIcon,
     this.prefixColor,
     this.suffixIcon,
@@ -47,9 +46,9 @@ class CustomFilledButton extends StatelessWidget {
     this.enableTapEffect = true,
     this.height = 36,
     this.width = 117,
-    this.backgroundColor,
     this.buttonSize,
     this.buttonState,
+    this.borderColor,
   });
 
   @override
@@ -62,8 +61,10 @@ class CustomFilledButton extends StatelessWidget {
       child: Container(
         height: buttonSize?.height ?? height,
         width: buttonSize?.width ?? width,
-        color: buttonState?.color ??
-            (fillColor ?? colors.interactiveDefaultPrimary),
+        decoration: BoxDecoration(
+            border: Border.all(
+          color: borderColor ?? colors.interactiveDefaultPrimary,
+        )),
         child: AbsorbPointer(
           absorbing: disabled,
           child: InkWell(
