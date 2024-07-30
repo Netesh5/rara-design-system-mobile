@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rara_design_system/components/buttons/custom_filled_button.dart';
+import 'package:rara_design_system/components/buttons/custom_button.dart';
 import 'package:rara_design_system/core/constants/assets.dart';
 import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
@@ -17,6 +17,8 @@ showWarningDialog(
   TextStyle? messageStyle,
   VoidCallback? onTap,
   VoidCallback? onCancel,
+  TextStyle? onTapStyle,
+  TextStyle? onCancelStyle,
   bool barrierDismissible = false,
 }) {
   final colors = rg<ITheme>().colors(context);
@@ -25,14 +27,11 @@ showWarningDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: colors.surfaceBackground,
           icon: SvgPicture.asset(
             Assets.warning,
             width: 40.wp,
             height: 40.hp,
-            colorFilter: ColorFilter.mode(
-              colors.feedbackSuccessPrimary,
-              BlendMode.srcIn,
-            ),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -54,7 +53,7 @@ showWarningDialog(
               ),
               Text(
                 message ??
-                    "The process could damage existing file.\n Do you still want to proceed?",
+                    "The process could damage existing file.\n           Do you still want to proceed?",
                 style: TextStyle(
                   fontSize: 14,
                   color: colors.textSecondary,
@@ -64,7 +63,10 @@ showWarningDialog(
                 height: 30.hp,
               ),
               CustomButton(
+                height: 43.hp,
                 title: "Continue",
+                titleStyle: onTapStyle ??
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 buttonVarient: ButtonVarient.filled,
                 buttonState: ButtonState.defaultState(),
                 width: 272.wp,
@@ -77,7 +79,10 @@ showWarningDialog(
                 height: 10.hp,
               ),
               CustomButton(
+                height: 43.hp,
                 title: "Cancel",
+                titleStyle: onCancelStyle ??
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 buttonVarient: ButtonVarient.ghost,
                 buttonState: ButtonState.error(),
                 width: 272.wp,

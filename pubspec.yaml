@@ -11,7 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
-  flutter_markdown: ^0.7.3
   flutter_svg: ^2.0.10+1
   flutter_syntax_view: ^4.0.0
   get_it: ^7.7.0

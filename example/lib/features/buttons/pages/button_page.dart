@@ -1,6 +1,6 @@
 import 'package:example/core/common/bottomsheet.dart';
 import 'package:flutter/material.dart';
-import 'package:rara_design_system/components/buttons/custom_filled_button.dart';
+import 'package:rara_design_system/components/buttons/custom_button.dart';
 import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/buttons_size_enum.dart';
@@ -401,6 +401,193 @@ class ButtonPage extends StatelessWidget {
               ),
               const Text(
                 "Large",
+                style: TextStyle(fontSize: 26),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: [
+                    // Default
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.defaultState(),
+                        "ButtonState.defaultState()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.filled,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.defaultState(),
+                        "ButtonState.defaultState()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.outline,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.defaultState(),
+                        "ButtonState.defaultState()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.ghost,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.depressed(),
+                        "ButtonState.depressed()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.filled,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.depressed(),
+                        "ButtonState.depressed()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.outline,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.depressed(),
+                        "ButtonState.depressed()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.ghost,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.disable(),
+                        "ButtonState.disable()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.filled,
+                        true),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.disable(),
+                        "ButtonState.disable()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.outline,
+                        true),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.disable(),
+                        "ButtonState.disable()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.ghost,
+                        true),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.error(),
+                        "ButtonState.error()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.filled,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.error(),
+                        "ButtonState.error()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.outline,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.error(),
+                        "ButtonState.error()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.ghost,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.errorDepressed(),
+                        "ButtonState.errorDepressed()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.filled,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.errorDepressed(),
+                        "ButtonState.errorDepressed()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.outline,
+                        false),
+
+                    buildButton(
+                        context,
+                        "Button",
+                        ButtonSize.large,
+                        ButtonState.errorDepressed(),
+                        "ButtonState.errorDepressed()",
+                        Icons.arrow_back_ios,
+                        Icons.arrow_forward_ios,
+                        ButtonVarient.ghost,
+                        false),
+                  ],
+                ),
+              ),
+
+              /// Floating Action Button
+              ///
+              ///
+              ///
+              ///
+              SizedBox(
+                height: 20.hp,
+              ),
+              const Text(
+                "FAB",
                 style: TextStyle(fontSize: 26),
               ),
               Padding(

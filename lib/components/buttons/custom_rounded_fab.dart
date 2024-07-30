@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:rara_design_system/core/animations/tap_effect.dart';
 import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
+import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/buttons_size_enum.dart';
 import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
 
-class CustomOutlineButton extends StatelessWidget {
+class CustomRoundedFAB extends StatelessWidget {
   final IconData? prefixIcon;
   final Color? prefixColor;
   final IconData? suffixIcon;
   final Color? suffixColor;
   final String title;
   final TextStyle? titleStyle;
+  final Color? fillColor;
   final VoidCallback? onPressed;
   final EdgeInsets? containerMargin;
   final EdgeInsets? containerPadding;
@@ -22,17 +24,19 @@ class CustomOutlineButton extends StatelessWidget {
   final bool enableTapEffect;
   final double height;
   final double width;
-
+  final Color? backgroundColor;
   final ButtonSize? buttonSize;
   final ButtonState? buttonState;
-  final Color? borderColor;
   final double borderRadius;
+  final ButtonVarient? buttonVarient;
+  final Color? borderColor;
 
   final int? flex;
-  const CustomOutlineButton({
+  const CustomRoundedFAB({
     super.key,
     required this.title,
     this.titleStyle,
+    this.fillColor,
     this.prefixIcon,
     this.prefixColor,
     this.suffixIcon,
@@ -42,15 +46,17 @@ class CustomOutlineButton extends StatelessWidget {
     this.containerPadding,
     this.flex = 1,
     this.showShadow = true,
-    this.iconSize = 24,
+    this.iconSize = 20,
     this.disabled = false,
     this.enableTapEffect = true,
     this.height = 36,
     this.width = 117,
+    this.backgroundColor,
     this.buttonSize,
     this.buttonState,
-    this.borderColor,
     this.borderRadius = 4,
+    this.buttonVarient,
+    this.borderColor,
   });
 
   @override
@@ -64,10 +70,19 @@ class CustomOutlineButton extends StatelessWidget {
         height: buttonSize?.height ?? height,
         width: buttonSize?.width ?? width,
         decoration: BoxDecoration(
-            border: Border.all(
-              color: borderColor ?? colors.interactiveDefaultPrimary,
-            ),
-            borderRadius: BorderRadius.circular(borderRadius)),
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: buttonVarient == ButtonVarient.outline
+              ? Border.all(
+                  color: borderColor ??
+                      buttonState?.color ??
+                      colors.interactiveDefaultPrimary,
+                )
+              : null,
+          color: buttonVarient == ButtonVarient.filled
+              ? buttonState?.color ??
+                  (fillColor ?? colors.interactiveDefaultPrimary)
+              : null,
+        ),
         child: AbsorbPointer(
           absorbing: disabled,
           child: InkWell(
@@ -86,7 +101,12 @@ class CustomOutlineButton extends StatelessWidget {
                       child: Icon(
                         prefixIcon,
                         size: iconSize,
-                        color: disabled ? colors.surfaceDisabled : prefixColor,
+                        color: disabled
+                            ? colors.iconDisabled
+                            : suffixColor ??
+                                (buttonVarient != ButtonVarient.filled
+                                    ? buttonState?.color
+                                    : colors.iconOnColor),
                       ),
                     ),
                   Column(
@@ -100,10 +120,16 @@ class CustomOutlineButton extends StatelessWidget {
                                   fontSize: 14.wp,
                                   color: disabled
                                       ? colors.textDisabled
-                                      : borderColor,
+                                      : buttonVarient != ButtonVarient.filled
+                                          ? buttonState?.color
+                                          : colors.textOnColor,
                                 ))
                             .copyWith(
-                          color: disabled ? colors.textDisabled : borderColor,
+                          color: disabled
+                              ? colors.textDisabled
+                              : buttonVarient != ButtonVarient.filled
+                                  ? buttonState?.color
+                                  : colors.textOnColor,
                         ),
                       ),
                     ],
@@ -114,7 +140,12 @@ class CustomOutlineButton extends StatelessWidget {
                       child: Icon(
                         suffixIcon,
                         size: iconSize,
-                        color: disabled ? colors.iconDisabled : suffixColor,
+                        color: disabled
+                            ? colors.iconDisabled
+                            : suffixColor ??
+                                (buttonVarient != ButtonVarient.filled
+                                    ? buttonState?.color
+                                    : colors.iconOnColor),
                       ),
                     ),
                 ],

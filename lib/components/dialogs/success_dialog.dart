@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rara_design_system/components/buttons/custom_filled_button.dart';
+import 'package:rara_design_system/components/buttons/custom_button.dart';
 import 'package:rara_design_system/core/constants/assets.dart';
 import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
@@ -9,12 +9,14 @@ import 'package:rara_design_system/core/services/navigation_service/navigation_s
 import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
 
-showSucessDialog(
+showSuccessDialog(
   BuildContext context,
   String title, {
   String? message,
   TextStyle? titleStyle,
   TextStyle? messageStyle,
+  TextStyle? onTapStyle,
+  TextStyle? onCancelStyle,
   VoidCallback? onTap,
   VoidCallback? onCancel,
   bool barrierDismissible = false,
@@ -25,14 +27,11 @@ showSucessDialog(
       barrierDismissible: barrierDismissible,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: colors.surfaceBackground,
           icon: SvgPicture.asset(
-            Assets.sucess,
+            Assets.success,
             width: 40.wp,
             height: 40.hp,
-            colorFilter: ColorFilter.mode(
-              colors.feedbackSuccessPrimary,
-              BlendMode.srcIn,
-            ),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -64,6 +63,9 @@ showSucessDialog(
               ),
               CustomButton(
                 title: "Okay",
+                height: 43.hp,
+                titleStyle: onTapStyle ??
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 buttonVarient: ButtonVarient.filled,
                 width: 272.wp,
                 onPressed: onTap ??
@@ -76,6 +78,9 @@ showSucessDialog(
               ),
               CustomButton(
                 title: "Cancel",
+                height: 43.hp,
+                titleStyle: onCancelStyle ??
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 buttonVarient: ButtonVarient.ghost,
                 buttonState: ButtonState.error(),
                 width: 272.wp,

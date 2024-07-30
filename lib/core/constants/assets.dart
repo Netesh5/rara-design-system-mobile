@@ -1,5 +1,8 @@
 class Assets {
-  static const String sucess = "assets/icons/sucess.svg";
-  static const String warning = "assets/icons/warning.svg";
-  static const String failure = "assets/icons/failure.svg";
+  static const String success =
+      "packages/rara_design_system/assets/icons/success.svg";
+  static const String warning =
+      "packages/rara_design_system/assets/icons/warning.svg";
+  static const String failure =
+      "packages/rara_design_system/assets/icons/failure.svg";
 }

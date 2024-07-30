@@ -17,6 +17,8 @@ showFailureDialog(
   TextStyle? messageStyle,
   VoidCallback? onTap,
   VoidCallback? onCancel,
+  TextStyle? onTapStyle,
+  TextStyle? onCancelStyle,
   bool barrierDismissible = false,
 }) {
   final colors = rg<ITheme>().colors(context);
@@ -25,14 +27,11 @@ showFailureDialog(
       barrierDismissible: barrierDismissible,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: colors.surfaceBackground,
           icon: SvgPicture.asset(
             Assets.failure,
             width: 40.wp,
             height: 40.hp,
-            colorFilter: ColorFilter.mode(
-              colors.feedbackSuccessPrimary,
-              BlendMode.srcIn,
-            ),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -64,6 +63,9 @@ showFailureDialog(
               ),
               CustomButton(
                 title: "Try Again",
+                height: 43.hp,
+                titleStyle: onTapStyle ??
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 buttonVarient: ButtonVarient.filled,
                 buttonState: ButtonState.defaultState(),
                 width: 272.wp,
@@ -77,6 +79,9 @@ showFailureDialog(
               ),
               CustomButton(
                 title: "Cancel",
+                height: 43.hp,
+                titleStyle: onCancelStyle ??
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 buttonVarient: ButtonVarient.ghost,
                 buttonState: ButtonState.error(),
                 width: 272.wp,

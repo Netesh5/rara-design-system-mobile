@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rara_design_system/components/buttons/custom_filled_button.dart';
+import 'package:rara_design_system/components/buttons/custom_button.dart';
 import 'package:rara_design_system/components/dialogs/failure_dialog.dart';
 import 'package:rara_design_system/components/dialogs/success_dialog.dart';
 import 'package:rara_design_system/components/dialogs/warning_dialog.dart';
@@ -27,7 +27,7 @@ class DialogsPage extends StatelessWidget {
             CustomButton(
               title: "Success Dialog",
               onPressed: () {
-                showSucessDialog(
+                showSuccessDialog(
                   context,
                   "Success Dialog",
                 );
