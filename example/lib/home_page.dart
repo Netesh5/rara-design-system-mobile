@@ -1,6 +1,5 @@
 import 'package:example/core/enums/components_type_enums.dart';
 import 'package:example/core/extension/string_extension.dart';
-import 'package:example/features/buttons/pages/button_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rara_design_system/core/animations/tap_effect.dart';
@@ -30,9 +29,7 @@ class HomePage extends StatelessWidget {
             },
             icon: context.isDarkMode
                 ? const Icon(Icons.dark_mode)
-                : const Icon(
-                    Icons.sunny,
-                  ),
+                : const Icon(Icons.sunny),
           )
         ],
       ),
@@ -50,8 +47,7 @@ class HomePage extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   NavigationService.push(
-                    target: const ButtonPage(),
-                  );
+                      target: ComponentType.values[index].route);
                 },
                 child: Card(
                   shape: RoundedRectangleBorder(

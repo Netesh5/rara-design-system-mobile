@@ -10,22 +10,31 @@ import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
 
 showSucessDialog(
+  BuildContext context,
+  String title, {
   String? message,
   TextStyle? titleStyle,
   TextStyle? messageStyle,
   VoidCallback? onTap,
-  VoidCallback? onCancel, {
-  required BuildContext context,
-  required String title,
+  VoidCallback? onCancel,
 }) {
   final colors = rg<ITheme>().colors(context);
   showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
+          icon: SvgPicture.asset(
+            Assets.sucess,
+            width: 40.wp,
+            height: 40.hp,
+            colorFilter: ColorFilter.mode(
+              colors.feedbackSuccessPrimary,
+              BlendMode.srcIn,
+            ),
+          ),
           content: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset(Assets.sucess),
               SizedBox(
                 height: 10.hp,
               ),
@@ -39,7 +48,7 @@ showSucessDialog(
                     ),
               ),
               SizedBox(
-                height: 5.hp,
+                height: 10.hp,
               ),
               Text(
                 message ?? "The process is successfully completed.",
@@ -49,7 +58,7 @@ showSucessDialog(
                 ),
               ),
               SizedBox(
-                height: 20.hp,
+                height: 30.hp,
               ),
               CustomButton(
                 title: "Okay",
