@@ -17,10 +17,12 @@ showFailureDialog(
   TextStyle? messageStyle,
   VoidCallback? onTap,
   VoidCallback? onCancel,
+  bool barrierDismissible = false,
 }) {
   final colors = rg<ITheme>().colors(context);
   showDialog(
       context: context,
+      barrierDismissible: barrierDismissible,
       builder: (context) {
         return AlertDialog(
           icon: SvgPicture.asset(

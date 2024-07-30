@@ -17,9 +17,11 @@ showWarningDialog(
   TextStyle? messageStyle,
   VoidCallback? onTap,
   VoidCallback? onCancel,
+  bool barrierDismissible = false,
 }) {
   final colors = rg<ITheme>().colors(context);
   showDialog(
+      barrierDismissible: barrierDismissible,
       context: context,
       builder: (context) {
         return AlertDialog(
