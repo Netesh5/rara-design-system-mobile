@@ -39,6 +39,7 @@ dependencies:
     path: ../
   flutter_bloc: ^8.1.6  
   flutter_syntax_view: ^4.0.0
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:
