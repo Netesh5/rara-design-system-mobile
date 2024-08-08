@@ -8,3 +8,14 @@ enum ButtonSize {
 
   const ButtonSize({required this.height, required this.width});
 }
+
+enum FAButtonSize {
+  small(height: 36, width: 36),
+  medium(height: 48, width: 48),
+  large(height: 72, width: 72);
+
+  final double height;
+  final double width;
+
+  const FAButtonSize({required this.height, required this.width});
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rara_design_system/components/buttons/custom_filled_button.dart';
+import 'package:rara_design_system/components/buttons/custom_button.dart';
 import 'package:rara_design_system/core/constants/assets.dart';
 import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';

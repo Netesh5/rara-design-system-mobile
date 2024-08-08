@@ -7,12 +7,14 @@ import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
 
-class CustomRoundedFAB extends StatelessWidget {
+class CustomFAButton extends StatelessWidget {
   final IconData? prefixIcon;
   final Color? prefixColor;
+  final IconData? centerIcon;
+  final Color? centerColor;
   final IconData? suffixIcon;
   final Color? suffixColor;
-  final String title;
+  final String? title;
   final TextStyle? titleStyle;
   final Color? fillColor;
   final VoidCallback? onPressed;
@@ -25,20 +27,22 @@ class CustomRoundedFAB extends StatelessWidget {
   final double height;
   final double width;
   final Color? backgroundColor;
-  final ButtonSize? buttonSize;
+  final FAButtonSize? buttonSize;
   final ButtonState? buttonState;
   final double borderRadius;
   final ButtonVarient? buttonVarient;
   final Color? borderColor;
 
   final int? flex;
-  const CustomRoundedFAB({
+  const CustomFAButton({
     super.key,
-    required this.title,
+    this.title,
     this.titleStyle,
     this.fillColor,
     this.prefixIcon,
     this.prefixColor,
+    this.centerIcon,
+    this.centerColor,
     this.suffixIcon,
     this.suffixColor,
     this.onPressed,
@@ -49,15 +53,26 @@ class CustomRoundedFAB extends StatelessWidget {
     this.iconSize = 20,
     this.disabled = false,
     this.enableTapEffect = true,
-    this.height = 36,
-    this.width = 117,
+    this.height = 72,
+    this.width = 72,
     this.backgroundColor,
     this.buttonSize,
     this.buttonState,
-    this.borderRadius = 4,
+    this.borderRadius = 12,
     this.buttonVarient,
     this.borderColor,
   });
+
+  double iconSizeValue(FAButtonSize buttonSize) {
+    switch (buttonSize) {
+      case FAButtonSize.large:
+        return 32;
+      case FAButtonSize.medium:
+        return 24;
+      case FAButtonSize.small:
+        return 16;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +112,7 @@ class CustomRoundedFAB extends StatelessWidget {
                 children: [
                   if (prefixIcon != null)
                     Container(
+                      alignment: Alignment.center,
                       padding: EdgeInsets.only(right: 10.wp),
                       child: Icon(
                         prefixIcon,
@@ -109,31 +125,44 @@ class CustomRoundedFAB extends StatelessWidget {
                                     : colors.iconOnColor),
                       ),
                     ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        title,
-                        style: (titleStyle ??
-                                TextStyle(
-                                  fontSize: 14.wp,
-                                  color: disabled
-                                      ? colors.textDisabled
-                                      : buttonVarient != ButtonVarient.filled
-                                          ? buttonState?.color
-                                          : colors.textOnColor,
-                                ))
-                            .copyWith(
+                  if (centerIcon != null)
+                    Center(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Icon(
+                          centerIcon,
+                          size:
+                              iconSizeValue(buttonSize ?? FAButtonSize.medium),
                           color: disabled
-                              ? colors.textDisabled
-                              : buttonVarient != ButtonVarient.filled
-                                  ? buttonState?.color
-                                  : colors.textOnColor,
+                              ? colors.iconDisabled
+                              : suffixColor ??
+                                  (buttonVarient != ButtonVarient.filled
+                                      ? buttonState?.color
+                                      : colors.iconOnColor),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  title != null
+                      ? Text(
+                          title ?? "",
+                          style: (titleStyle ??
+                                  TextStyle(
+                                    fontSize: 14.wp,
+                                    color: disabled
+                                        ? colors.textDisabled
+                                        : buttonVarient != ButtonVarient.filled
+                                            ? buttonState?.color
+                                            : colors.textOnColor,
+                                  ))
+                              .copyWith(
+                            color: disabled
+                                ? colors.textDisabled
+                                : buttonVarient != ButtonVarient.filled
+                                    ? buttonState?.color
+                                    : colors.textOnColor,
+                          ),
+                        )
+                      : const SizedBox(),
                   if (suffixIcon != null)
                     Container(
                       padding: EdgeInsets.only(left: 10.wp),
