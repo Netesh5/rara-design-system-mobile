@@ -11,7 +11,7 @@ class BottomsheetHeader extends StatelessWidget {
     this.prefixColor,
     this.suffixIcon,
     this.suffixColor,
-    this.iconSize = 16,
+    this.iconSize = 18,
     this.perfixPressed,
     this.suffixPressed,
     this.titleStyle,
@@ -29,6 +29,7 @@ class BottomsheetHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = rg<ITheme>().colors(context);
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (prefixIcon != null)
           IconButton(
@@ -41,22 +42,27 @@ class BottomsheetHeader extends StatelessWidget {
               size: iconSize,
             ),
           ),
-        Text(
-          title,
-          style:
-              titleStyle ?? TextStyle(color: colors.textPrimary, fontSize: 16),
+        Center(
+          child: Text(
+            title,
+            style: titleStyle ??
+                TextStyle(
+                    color: colors.textPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
+          ),
         ),
-        if (suffixIcon != null)
-          IconButton(
-            onPressed: perfixPressed ??
-                () {
-                  NavigationService.pop();
-                },
-            icon: Icon(
-              suffixIcon,
-              size: iconSize,
-            ),
-          )
+        IconButton(
+          onPressed: suffixPressed ??
+              () {
+                NavigationService.pop();
+              },
+          icon: Icon(
+            suffixIcon ?? Icons.close,
+            size: iconSize,
+            color: colors.iconPrimary,
+          ),
+        )
       ],
     );
   }

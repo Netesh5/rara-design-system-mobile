@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:example/core/enums/components_type_enums.dart';
 import 'package:example/core/extension/string_extension.dart';
 import 'package:flutter/material.dart';
@@ -57,10 +58,13 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   child: Center(
-                    child: Text(
-                      ComponentType.values[index].name.capitalize(),
-                      style: TextStyle(
-                        fontSize: 30.wp,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: AutoSizeText(
+                        ComponentType.values[index].name.capitalize(),
+                        style: TextStyle(
+                          fontSize: 20.wp,
+                        ),
                       ),
                     ),
                   ),
