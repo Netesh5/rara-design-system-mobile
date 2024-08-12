@@ -1,4 +1,5 @@
 import 'package:example/core/common/bottomsheet.dart';
+import 'package:example/core/extension/button_knob_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:rara_design_system/components/buttons/custom_button.dart';
 import 'package:rara_design_system/components/buttons/custom_rounded_fab.dart';
@@ -6,6 +7,8 @@ import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/buttons_size_enum.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:widgetbook/widgetbook.dart';
 
 class ButtonPage extends StatelessWidget {
   const ButtonPage({super.key});
@@ -1057,4 +1060,18 @@ class ButtonPage extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Customizable',
+  type: CustomButton,
+)
+CustomButton customizableButton(BuildContext context) {
+  return CustomButton(
+    title: context.knobs.string(label: 'Title', initialValue: 'Custom Button'),
+    onPressed: context.knobs.boolean(label: 'Enabled', initialValue: true)
+        ? () {}
+        : null,
+    buttonVarient: context.knobs.varient(label: "Button varient"),
+  );
 }

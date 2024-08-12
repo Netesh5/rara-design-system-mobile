@@ -7,7 +7,7 @@ import 'package:rara_design_system/core/animations/tap_effect.dart';
 import 'package:rara_design_system/core/extension/build_context_extension.dart';
 
 import 'package:rara_design_system/core/injection/injection.dart';
-import 'package:rara_design_system/core/services/navigation_service/navigation_service.dart';
+
 import 'package:rara_design_system/core/theme/cubit/theme_cubit.dart';
 import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
@@ -47,8 +47,8 @@ class HomePage extends StatelessWidget {
               scaleDown: 0.9,
               child: GestureDetector(
                 onTap: () {
-                  NavigationService.push(
-                      target: ComponentType.values[index].route);
+                  // NavigationService.push(
+                  //     target: ComponentType.values[index].route);
                 },
                 child: Card(
                   shape: RoundedRectangleBorder(
