@@ -1,7 +1,10 @@
 import 'package:example/main.directories.g.dart';
 import 'package:flutter/material.dart';
 import 'package:rara_design_system/core/injection/injection.dart';
+import 'package:rara_design_system/core/services/navigation_service/navigation_service.dart';
 import 'package:rara_design_system/core/theme/theme.dart';
+import 'package:rara_design_system/rara_design_system.dart';
+
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -19,43 +22,46 @@ class WidgetbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Widgetbook.material(
-      directories: directories,
-      addons: [
-        MaterialThemeAddon(
-          themes: [
-            WidgetbookTheme(
-              name: 'Light',
-              data: AppTheme.lightTheme,
-            ),
-            WidgetbookTheme(
-              name: 'Dark',
-              data: AppTheme.darkTheme,
-            ),
-          ],
-        ),
-        TextScaleAddon(
-          scales: [
-            1.0,
-            2.0,
-            3.0,
-          ],
-        ),
-        DeviceFrameAddon(
-          devices: [
-            Devices.ios.iPhoneSE,
-            Devices.ios.iPhone13,
-            Devices.ios.iPhone13ProMax
-          ],
-        ),
-      ],
-      appBuilder: (context, child) {
-        return Scaffold(
-          body: Center(
-            child: child,
+    return RaraApp(
+      navigatorKey: NavigationService.navigationKey,
+      child: Widgetbook.material(
+        directories: directories,
+        addons: [
+          MaterialThemeAddon(
+            themes: [
+              WidgetbookTheme(
+                name: 'Light',
+                data: AppTheme.lightTheme,
+              ),
+              WidgetbookTheme(
+                name: 'Dark',
+                data: AppTheme.darkTheme,
+              ),
+            ],
           ),
-        );
-      },
+          TextScaleAddon(
+            scales: [
+              1.0,
+              2.0,
+              3.0,
+            ],
+          ),
+          DeviceFrameAddon(
+            devices: [
+              Devices.ios.iPhoneSE,
+              Devices.ios.iPhone13,
+              Devices.ios.iPhone13ProMax
+            ],
+          ),
+        ],
+        appBuilder: (context, child) {
+          return Scaffold(
+            body: Center(
+              child: child,
+            ),
+          );
+        },
+      ),
     );
   }
 }

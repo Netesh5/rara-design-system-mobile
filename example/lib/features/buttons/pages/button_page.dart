@@ -1069,9 +1069,11 @@ class ButtonPage extends StatelessWidget {
 CustomButton customizableButton(BuildContext context) {
   return CustomButton(
     title: context.knobs.string(label: 'Title', initialValue: 'Custom Button'),
-    onPressed: context.knobs.boolean(label: 'Enabled', initialValue: true)
-        ? () {}
-        : null,
+    // onPressed: context.knobs.boolean(label: 'Enabled', initialValue: true)
+    //     ? () {}
+    //     : null,
     buttonVarient: context.knobs.varient(label: "Button varient"),
+    buttonState: context.knobs.buttonState(label: "Button state"),
+    buttonSize: context.knobs.buttonSize(label: "Button size"),
   );
 }
