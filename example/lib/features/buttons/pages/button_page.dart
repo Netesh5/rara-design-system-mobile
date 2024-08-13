@@ -1073,19 +1073,20 @@ CustomButton customizableButton(BuildContext context) {
     buttonState: context.knobs.buttonState(label: "Button state"),
     buttonSize: context.knobs.buttonSize(label: "Button size"),
     prefixIcon: context.knobs.list(label: "Prefix Icon", options: icons),
-    suffixIcon: context.knobs.list(label: "Suffix Icon", options: icons),
-    height: context.knobs.buttonSize(label: "Button size") == ButtonSize.custom
-        ? context.knobs.double.input(label: "Height")
-        : 36,
+    suffixIcon: context.knobs
+        .list(label: "Suffix Icon", options: icons, initialOption: icons.last),
+    borderRadius: context.knobs.double
+        .slider(label: "Radius", initialValue: 4, divisions: 20),
     onPressed: () {
       showCodeBottomSheet(context, '''
        CustomButton(
-          title: "${context.knobs.string(label: "Title")}",
+          title: "${context.knobs.string(label: "Title", initialValue: 'Button')}",
           buttonSize: ${context.knobs.buttonSize(label: "Button size")},
           buttonState: ${context.knobs.buttonState(label: "Button size")},
           buttonVarient: ${context.knobs.varient(label: "Button varient")},
           prefixIcon:${context.knobs.list(label: "Prefix Icon", options: icons)}
-          suffixIcon:${context.knobs.list(label: "Suffix Icon", options: icons, initialOption: icons.last)}
+          suffixIcon:${context.knobs.list(label: "Suffix Icon", options: icons, initialOption: icons.last)},
+          ${context.knobs.double.slider(label: "Radius") > 4 ? "borderRadius:${context.knobs.double.input(label: "Radius")}," : ""}
           ),
       ''');
     },
