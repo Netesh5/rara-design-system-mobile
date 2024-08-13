@@ -26,7 +26,7 @@ class RaraApp extends StatelessWidget {
   final List<NavigatorObserver> navigatorObservers =
       const <NavigatorObserver>[];
   final Widget Function(BuildContext, Widget?)? builder;
-  final String title = '';
+  final String title;
   final String Function(BuildContext)? onGenerateTitle;
   final Color? color;
   final ThemeData? theme;
@@ -83,6 +83,7 @@ class RaraApp extends StatelessWidget {
     this.localeListResolutionCallback,
     this.lightColors,
     this.darkColors,
+    this.title = "",
   });
 
   // intializeDI() async {

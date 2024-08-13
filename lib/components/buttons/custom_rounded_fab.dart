@@ -71,6 +71,8 @@ class CustomFAButton extends StatelessWidget {
         return 24;
       case FAButtonSize.small:
         return 16;
+      case FAButtonSize.custom:
+        return 50;
     }
   }
 
