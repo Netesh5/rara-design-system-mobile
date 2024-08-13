@@ -22,6 +22,7 @@ class WidgetbookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaraApp(
+      title: "Rara Desgin System",
       navigatorKey: NavigationService.navigationKey,
       child: Widgetbook(
         directories: directories,
