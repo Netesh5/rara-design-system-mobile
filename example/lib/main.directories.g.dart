@@ -25,7 +25,14 @@ final directories = <_i1.WidgetbookNode>[
               name: 'Customizable',
               builder: _i2.customizableButton,
             ),
-          )
+          ),
+          _i1.WidgetbookLeafComponent(
+            name: 'CustomFAButton',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Customizable',
+              builder: _i2.customFAButton,
+            ),
+          ),
         ],
       )
     ],

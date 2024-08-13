@@ -1093,6 +1093,41 @@ CustomButton customizableButton(BuildContext context) {
   );
 }
 
+@widgetbook.UseCase(name: "Customizable", type: CustomFAButton)
+CustomFAButton customFAButton(BuildContext context) {
+  return CustomFAButton(
+    buttonSize: context.knobs.list(
+      label: "Button Size",
+      options: FAButtonSize.values,
+      labelBuilder: (value) {
+        return value!.name;
+      },
+    ),
+    buttonState: context.knobs.buttonState(label: "Button state"),
+    centerIcon: context.knobs.list(label: "Icon", options: icons),
+    buttonVarient: context.knobs.list(
+      label: "Varient",
+      options: ButtonVarient.values,
+      labelBuilder: (value) {
+        return value!.name;
+      },
+    ),
+    borderRadius: context.knobs.double.slider(
+        label: "Radius", initialValue: 50, divisions: 50, min: 0, max: 50),
+    onPressed: () {
+      showCodeBottomSheet(context, '''
+        CustomFAButton(
+          buttonSize: ${context.knobs.list(label: "Button Size", options: FAButtonSize.values)},
+          buttonState: ${context.knobs.buttonState(label: "Button state")},
+          centerIcon: ${context.knobs.list(label: "Icon", options: icons)},
+          buttonVarient:${context.knobs.list(label: "Varient", options: ButtonVarient.values)},
+          borderRadius: ${context.knobs.double.slider(label: "Radius")},
+          ),
+        ''');
+    },
+  );
+}
+
 final List<IconData> icons = [
   Icons.arrow_back_ios_new_rounded,
   Icons.arrow_forward_ios_rounded,
