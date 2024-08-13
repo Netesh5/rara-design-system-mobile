@@ -7,7 +7,7 @@ import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
 import 'package:rara_design_system/core/extension/build_context_extension.dart';
 import 'package:rara_design_system/core/services/navigation_service/navigation_service.dart';
 
-customBottomSheet(BuildContext context, String code) {
+showCodeBottomSheet(BuildContext context, String code) {
   return showModalBottomSheet(
     context: context,
     showDragHandle: true,
@@ -56,7 +56,7 @@ class _CustomBottomSheet extends StatelessWidget {
                     ),
                   );
               });
-              NavigationService.pop();
+              Navigator.of(context).pop();
             },
           )
         ],

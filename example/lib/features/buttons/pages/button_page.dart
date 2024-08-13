@@ -35,7 +35,7 @@ class ButtonPage extends StatelessWidget {
       onPressed: disabled
           ? null
           : () {
-              customBottomSheet(context, '''
+              showCodeBottomSheet(context, '''
         CustomButton(
           title: "$title",
           buttonSize: $size,
@@ -67,7 +67,7 @@ class ButtonPage extends StatelessWidget {
       borderRadius: 50,
       disabled: disabled,
       onPressed: () {
-        customBottomSheet(context, '''
+        showCodeBottomSheet(context, '''
         CustomFAButton(
           buttonSize: $size,
           buttonState: $buttonState,
@@ -1068,9 +1068,31 @@ class ButtonPage extends StatelessWidget {
 )
 CustomButton customizableButton(BuildContext context) {
   return CustomButton(
-    title: context.knobs.string(label: 'Title', initialValue: 'Custom Button'),
+    title: context.knobs.string(label: 'Title', initialValue: 'Button'),
     buttonVarient: context.knobs.varient(label: "Button varient"),
     buttonState: context.knobs.buttonState(label: "Button state"),
     buttonSize: context.knobs.buttonSize(label: "Button size"),
+    prefixIcon: context.knobs.list(label: "Prefix Icon", options: icons),
+    suffixIcon: context.knobs.list(label: "Suffix Icon", options: icons),
+    height: context.knobs.buttonSize(label: "Button size") == ButtonSize.custom
+        ? context.knobs.double.input(label: "Height")
+        : 36,
+    onPressed: () {
+      showCodeBottomSheet(context, '''
+       CustomButton(
+          title: "${context.knobs.string(label: "Title")}",
+          buttonSize: ${context.knobs.buttonSize(label: "Button size")},
+          buttonState: ${context.knobs.buttonState(label: "Button size")},
+          buttonVarient: ${context.knobs.varient(label: "Button varient")},
+          prefixIcon:${context.knobs.list(label: "Prefix Icon", options: icons)}
+          suffixIcon:${context.knobs.list(label: "Suffix Icon", options: icons, initialOption: icons.last)}
+          ),
+      ''');
+    },
   );
 }
+
+final List<IconData> icons = [
+  Icons.arrow_back_ios_new_rounded,
+  Icons.arrow_forward_ios_rounded,
+];

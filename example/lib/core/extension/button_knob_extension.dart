@@ -1,4 +1,5 @@
-import 'package:example/features/buttons/pages/button_knob.dart';
+import 'package:example/features/buttons/knob/button_knob.dart';
+
 import 'package:rara_design_system/core/enums/buttons/button_state_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
 import 'package:rara_design_system/core/enums/buttons/buttons_size_enum.dart';

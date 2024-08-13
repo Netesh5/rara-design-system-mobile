@@ -2,7 +2,6 @@ import 'package:example/main.directories.g.dart';
 import 'package:flutter/material.dart';
 import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/services/navigation_service/navigation_service.dart';
-import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/theme/theme.dart';
 import 'package:rara_design_system/rara_design_system.dart';
 
@@ -10,7 +9,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 // Import the generated directories variable
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await RaraDI.init();
@@ -25,7 +23,7 @@ class WidgetbookApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaraApp(
       navigatorKey: NavigationService.navigationKey,
-      child: Widgetbook.material(
+      child: Widgetbook(
         directories: directories,
         addons: [
           MaterialThemeAddon(

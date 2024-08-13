@@ -40,7 +40,7 @@ class BottomSheetPage extends StatelessWidget {
               ),
               title: "Custom Title",
               onDonePressed: () {
-                customBottomSheet(context, '''
+                showCodeBottomSheet(context, '''
  showCustomBottomSheet(
               isScrollControlled: true,
               context: context,
