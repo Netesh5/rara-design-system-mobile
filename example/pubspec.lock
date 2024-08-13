@@ -834,7 +834,7 @@ packages:
     source: hosted
     version: "2.4.5"
   widgetbook:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: widgetbook
       sha256: de5b9887f9ad663bdcc1f957bc22aa0eb4dd7b406ac0142158bf35c0fad4a4f2
