@@ -1,7 +1,8 @@
 enum ButtonSize {
   small(height: 36, width: 117),
   medium(height: 44, width: 123),
-  large(height: 46, width: 130);
+  large(height: 46, width: 130),
+  custom(height: 50, width: 160);
 
   final double height;
   final double width;
