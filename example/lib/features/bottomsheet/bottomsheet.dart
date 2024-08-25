@@ -28,7 +28,7 @@ class BottomSheetPage extends StatelessWidget {
               isScrollControlled: true,
               context: context,
               doneTitle: "Show Code",
-              child: Container(
+              body: Container(
                 width: 200.w,
                 height: 400.h,
                 decoration: const BoxDecoration(
@@ -66,38 +66,49 @@ class BottomSheetPage extends StatelessWidget {
   }
 }
 
-@widgetbook.UseCase(
-    name: 'Bottomsheet', type: ShowBottomSheet, path: "components")
-ShowBottomSheet showBottomSheet(BuildContext context) {
-  return const ShowBottomSheet();
+@widgetbook.UseCase(name: 'Bottomsheet', type: BottomSheet, path: "components")
+BottomSheet showBottomSheet(BuildContext context) {
+  return const BottomSheet();
 }
 
-class ShowBottomSheet extends StatefulWidget {
-  const ShowBottomSheet({super.key});
+class BottomSheet extends StatefulWidget {
+  const BottomSheet({super.key});
 
   @override
-  State<ShowBottomSheet> createState() => _ShowBottomSheetState();
+  State<BottomSheet> createState() => _ShowBottomSheetState();
 }
 
-class _ShowBottomSheetState extends State<ShowBottomSheet> {
+class _ShowBottomSheetState extends State<BottomSheet> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      showCustomBottomSheet(
-          context: context,
-          child: Container(
-            width: 200.w,
-            height: 400.h,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                    "https://avatars.githubusercontent.com/u/63892396?s=280&v=4"),
-              ),
-            ),
-          ),
-          title: "Custom Buttonsheet");
+      bottomsheet();
     });
     super.initState();
+  }
+
+  bottomsheet() {
+    showCustomBottomSheet(
+      barrierColor: Colors.transparent,
+      borderRadius: 12,
+      context: context,
+      constraints:
+          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+      body: Container(
+        width: 200.w,
+        height: 400.h,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "https://avatars.githubusercontent.com/u/63892396?s=280&v=4"),
+          ),
+        ),
+      ),
+      title: "Custom Buttonsheet",
+      onClosePressed: () {
+        Navigator.of(context).pop();
+      },
+    );
   }
 
   @override
@@ -106,20 +117,23 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
       title: "Bottomsheet",
       buttonVarient: ButtonVarient.filled,
       onPressed: () {
-        showCustomBottomSheet(
-          context: context,
-          child: Container(
-            width: 200.w,
-            height: 400.h,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                    "https://avatars.githubusercontent.com/u/63892396?s=280&v=4"),
+        showCodeBottomSheet(context, '''
+ showCustomBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              body: Container(
+                width: 200.w,
+                height: 400.h,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        "https://avatars.githubusercontent.com/u/63892396?s=280&v=4"),
+                  ),
+                ),
               ),
-            ),
-          ),
-          title: "Custom Buttonsheet",
-        );
+              title: "Custom Title",
+              ),
+''');
       },
     );
   }

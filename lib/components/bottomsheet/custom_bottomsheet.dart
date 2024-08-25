@@ -4,11 +4,12 @@ import 'package:rara_design_system/components/bottomsheet/bottomsheet_wrapper.da
 
 showCustomBottomSheet({
   required BuildContext context,
-  required Widget child,
+  required Widget body,
   required String title,
   Color? backgroundColor,
   String? barrierLabel,
   double? elevation,
+  double? borderRadius,
   ShapeBorder? shape,
   Clip? clipBehavior,
   BoxConstraints? constraints,
@@ -31,6 +32,9 @@ showCustomBottomSheet({
   final String? doneTitle,
 }) {
   return showModalBottomSheet(
+    shape: shape ??
+        RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 0)),
     context: context,
     backgroundColor: backgroundColor,
     isDismissible: isDismissible,
@@ -51,7 +55,7 @@ showCustomBottomSheet({
       onDonePressed: onDonePressed,
       cancelTitle: cancelTitle,
       doneTitle: doneTitle,
-      child: child,
+      child: body,
     ),
   );
 }

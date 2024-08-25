@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:rara_design_system/components/bottomsheet/bottomsheet_footer.dart';
 import 'package:rara_design_system/components/bottomsheet/bottomsheet_header.dart';
+import 'package:rara_design_system/core/injection/injection.dart';
+import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/utils/size_utils.dart';
 
 class BottomSheetWrapper extends StatelessWidget {
@@ -31,6 +33,7 @@ class BottomSheetWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = rg<ITheme>().colors(context);
     return Padding(
       padding: EdgeInsets.all(padding),
       child: Column(
@@ -38,6 +41,10 @@ class BottomSheetWrapper extends StatelessWidget {
           BottomsheetHeader(
             title: title,
             titleStyle: textStyle,
+          ),
+          Divider(
+            thickness: 0.2,
+            color: colors.iconDisabled,
           ),
           SizedBox(
             height: 10.hp,

@@ -5,10 +5,14 @@ import 'package:rara_design_system/components/buttons/custom_button.dart';
 
 import 'package:rara_design_system/core/enums/buttons/button_varient_enum.dart';
 import 'package:rara_design_system/core/extension/build_context_extension.dart';
-import 'package:rara_design_system/core/services/navigation_service/navigation_service.dart';
 
 showCodeBottomSheet(BuildContext context, String code) {
   return showModalBottomSheet(
+    constraints: BoxConstraints(
+      maxWidth: MediaQuery.of(context).size.width * 0.7,
+      maxHeight: MediaQuery.of(context).size.width * 0.60,
+    ),
+    isScrollControlled: true,
     context: context,
     showDragHandle: true,
     builder: (context) => _CustomBottomSheet(
