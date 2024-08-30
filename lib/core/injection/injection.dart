@@ -7,8 +7,14 @@ import 'package:rara_design_system/core/theme/light_colors.dart';
 final rg = GetIt.instance;
 
 class RaraDI {
-  static init({LightColors? lightColors, DarkColors? darkColors}) async {
+  static init(
+      {LightColors? lightColors,
+      DarkColors? darkColors,
+      String? fontFamily}) async {
     await PrefInjector.init();
-    await ThemeInjector.init(lightColors: lightColors, darkColors: darkColors);
+    await ThemeInjector.init(
+        lightColors: lightColors,
+        darkColors: darkColors,
+        fontFamily: fontFamily);
   }
 }
