@@ -6,9 +6,10 @@ import 'package:rara_design_system/core/theme/light_colors.dart';
 import 'package:rara_design_system/core/theme/theme.dart';
 
 class ThemeInjector {
-  static init({LightColors? lightColors, DarkColors? darkColors}) {
+  static init(
+      {LightColors? lightColors, DarkColors? darkColors, String? fontFamily}) {
     rg.registerFactory<LightColors>(() => lightColors ?? LightColors());
-    rg.registerFactory<ITheme>(() => AppTheme());
+    rg.registerFactory<ITheme>(() => AppTheme()..getfontFamily(fontFamily));
     rg.registerFactory<DarkColors>(() => darkColors ?? DarkColors());
     rg.registerFactory<ThemeCubit>(() => ThemeCubit(
           themePrefs: rg(),

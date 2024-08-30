@@ -7,11 +7,13 @@ import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/theme/light_colors.dart';
 
 class AppTheme extends ITheme {
+  static String fontFamily = "Inter";
+
   static final lightColors = rg<LightColors>();
   static final darkColors = rg<DarkColors>();
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: false,
-        fontFamily: "Inter",
+        fontFamily: fontFamily,
         brightness: Brightness.light,
         scaffoldBackgroundColor: lightColors.surfaceLayout,
         appBarTheme: AppBarTheme(
@@ -61,7 +63,7 @@ class AppTheme extends ITheme {
 
   static ThemeData get darkTheme => ThemeData(
         useMaterial3: false,
-        fontFamily: "Inter",
+        fontFamily: fontFamily,
         brightness: Brightness.dark,
         scaffoldBackgroundColor: darkColors.surfaceLayout,
         dividerColor: darkColors.borderElements,
@@ -105,5 +107,9 @@ class AppTheme extends ITheme {
   @override
   IColors colors(BuildContext context) {
     return context.isDarkMode ? darkColors : lightColors;
+  }
+
+  String getfontFamily(String? font) {
+    return fontFamily = font ?? "Inter";
   }
 }
