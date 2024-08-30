@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
   final Color? backgroundColor;
   final Color? tabBackgroundColor;
-  final String? title;
+  final String title;
   final TextStyle? titleStyle;
   final bool showBottomBorder;
   final Function()? onBackPressed;
@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.bottom,
     this.backgroundColor,
     this.tabBackgroundColor,
-    this.title,
+    required this.title,
     this.titleStyle,
     this.actions = const [],
     this.showBottomBorder = true,
@@ -96,12 +96,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               constraints: const BoxConstraints(maxHeight: 56),
               child: NavigationToolbar(
                 leading: getLeadingIcon(context),
-                middle: title != null
-                    ? Text(
-                        title ?? "",
-                        style: titleStyle,
-                      )
-                    : centerWidget,
+                middle: centerWidget ??
+                    Text(
+                      title,
+                      style: titleStyle,
+                    ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: actions,
