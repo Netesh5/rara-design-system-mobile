@@ -98,7 +98,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 leading: getLeadingIcon(context),
                 middle: title != null
                     ? Text(
-                        title!,
+                        title ?? "",
                         style: titleStyle,
                       )
                     : centerWidget,
