@@ -7,7 +7,7 @@ import 'package:rara_design_system/core/theme/interface/itheme.dart';
 
 import 'package:rara_design_system/core/theme/light_colors.dart';
 
-class AppTheme implements ITheme {
+class AppTheme extends ITheme {
   static final lightColors = rg<LightColors>();
   static final darkColors = rg<DarkColors>();
   static ThemeData get lightTheme => ThemeData(

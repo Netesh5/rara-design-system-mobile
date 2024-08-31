@@ -7,7 +7,7 @@ import 'package:rara_design_system/core/theme/theme.dart';
 
 class ThemeInjector {
   static init(
-      {LightColors? lightColors, DarkColors? darkColors, AppTheme? appTheme}) {
+      {LightColors? lightColors, DarkColors? darkColors, ITheme? appTheme}) {
     rg.registerFactory<ITheme>(() => appTheme ?? AppTheme());
     rg.registerFactory<LightColors>(() => lightColors ?? LightColors());
     rg.registerFactory<DarkColors>(() => darkColors ?? DarkColors());
