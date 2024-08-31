@@ -41,7 +41,7 @@ class RaraApp extends StatelessWidget {
   final Locale? Function(List<Locale>?, Iterable<Locale>)?
       localeListResolutionCallback;
   final Locale? Function(Locale?, Iterable<Locale>)? localeResolutionCallback;
-  final Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')];
+  final Iterable<Locale>? supportedLocales;
   final bool debugShowMaterialGrid = false;
   final bool showPerformanceOverlay = false;
   final bool checkerboardRasterCacheImages = false;
@@ -60,6 +60,7 @@ class RaraApp extends StatelessWidget {
     this.navigatorKey,
     this.scaffoldMessengerKey,
     this.home,
+    this.supportedLocales,
     this.initialRoute,
     this.onGenerateRoute,
     this.onGenerateInitialRoutes,
@@ -126,7 +127,8 @@ class RaraApp extends StatelessWidget {
             shortcuts: shortcuts,
             showPerformanceOverlay: showPerformanceOverlay,
             showSemanticsDebugger: showSemanticsDebugger,
-            supportedLocales: supportedLocales,
+            supportedLocales:
+                supportedLocales ?? const <Locale>[Locale('en', 'US')],
             themeAnimationCurve: themeAnimationCurve,
             themeAnimationDuration: themeAnimationDuration,
             themeAnimationStyle: themeAnimationStyle,
