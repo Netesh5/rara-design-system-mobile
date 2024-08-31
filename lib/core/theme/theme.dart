@@ -9,6 +9,10 @@ import 'package:rara_design_system/core/theme/light_colors.dart';
 class AppTheme extends ITheme {
   static String fontFamily = "Inter";
 
+  set font(String? fontFam) {
+    fontFamily = fontFam ?? "Inter";
+  }
+
   static final lightColors = rg<LightColors>();
   static final darkColors = rg<DarkColors>();
   static ThemeData get lightTheme => ThemeData(
