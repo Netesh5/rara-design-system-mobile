@@ -4,9 +4,10 @@ import 'package:rara_design_system/core/injection/injection.dart';
 import 'package:rara_design_system/core/theme/dark_colors.dart';
 import 'package:rara_design_system/core/theme/interface/icolors.dart';
 import 'package:rara_design_system/core/theme/interface/itheme.dart';
+
 import 'package:rara_design_system/core/theme/light_colors.dart';
 
-class AppTheme extends ITheme {
+class AppTheme implements ITheme {
   static final lightColors = rg<LightColors>();
   static final darkColors = rg<DarkColors>();
   static ThemeData get lightTheme => ThemeData(
