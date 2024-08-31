@@ -95,7 +95,7 @@ class RaraApp extends StatelessWidget {
         builder: (context, appTheme) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: appTheme,
+            theme: theme ?? appTheme,
             home: child,
             navigatorKey: navigatorKey,
             locale: locale,

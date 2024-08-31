@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:rara_design_system/core/extension/build_context_extension.dart';
 import 'package:rara_design_system/core/injection/injection.dart';
@@ -10,7 +12,8 @@ class AppTheme extends ITheme {
   static String? fontFamily;
 
   set font(String? fontFam) {
-    fontFamily = fontFam ?? "Inter";
+    fontFamily = fontFam;
+    log("Font Family :${fontFamily.toString()}");
   }
 
   static final lightColors = rg<LightColors>();
