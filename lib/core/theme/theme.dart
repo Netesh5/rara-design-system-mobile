@@ -7,7 +7,7 @@ import 'package:rara_design_system/core/theme/interface/itheme.dart';
 import 'package:rara_design_system/core/theme/light_colors.dart';
 
 class AppTheme extends ITheme {
-  static String fontFamily = "Inter";
+  static String? fontFamily;
 
   set font(String? fontFam) {
     fontFamily = fontFam ?? "Inter";
