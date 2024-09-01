@@ -22,19 +22,19 @@ class ButtonState {
 
   static final colors = rg<ITheme>().colors(NavigationService.context);
 
-  factory ButtonState.defaultState() {
-    return ButtonState._(color: colors.interactiveDefaultPrimary);
+  factory ButtonState.defaultState({Color? color}) {
+    return ButtonState._(color: color ?? colors.interactiveDefaultPrimary);
   }
-  factory ButtonState.depressed() {
-    return ButtonState._(color: colors.interactiveDefaultDepressed);
+  factory ButtonState.depressed({Color? color}) {
+    return ButtonState._(color: color ?? colors.interactiveDefaultDepressed);
   }
-  factory ButtonState.disable() {
-    return ButtonState._(color: colors.surfaceDisabled);
+  factory ButtonState.disable({Color? color}) {
+    return ButtonState._(color: color ?? colors.surfaceDisabled);
   }
-  factory ButtonState.error() {
-    return ButtonState._(color: colors.interactiveCriticalPrimary);
+  factory ButtonState.error({Color? color}) {
+    return ButtonState._(color: color ?? colors.interactiveCriticalPrimary);
   }
-  factory ButtonState.errorDepressed() {
-    return ButtonState._(color: colors.interactiveCriticalDepressed);
+  factory ButtonState.errorDepressed({Color? color}) {
+    return ButtonState._(color: color ?? colors.interactiveCriticalDepressed);
   }
 }
