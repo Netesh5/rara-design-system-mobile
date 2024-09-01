@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:rara_design_system/core/storage/interface/istorage_repo.dart';
 
-class ThemePrefs<T> implements IStorageRepo {
+class ThemePrefs<T> extends IStorageRepo {
   final SharedPreferences preferences;
   ThemePrefs({
     required this.preferences,
