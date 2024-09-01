@@ -99,7 +99,11 @@ class CustomButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (prefixIcon == null && prefixWidget != null) prefixWidget!,
+                  if (prefixIcon == null && prefixWidget != null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: prefixWidget!,
+                    ),
                   if (prefixIcon != null)
                     Container(
                       padding: EdgeInsets.only(right: 10.wp),
@@ -139,7 +143,11 @@ class CustomButton extends StatelessWidget {
                       ),
                     ],
                   ),
-                  if (suffixIcon == null && suffixWidget != null) suffixWidget!,
+                  if (suffixIcon == null && suffixWidget != null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: suffixWidget!,
+                    ),
                   if (suffixIcon != null)
                     Container(
                       padding: EdgeInsets.only(left: 10.wp),
