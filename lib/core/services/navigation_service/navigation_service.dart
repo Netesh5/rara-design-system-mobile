@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class NavigationService {
   NavigationService._internal();
@@ -26,40 +25,47 @@ class NavigationService {
 
   //Navigate Push
 
-  static Future<dynamic> push(
-      {String routeName = '', required Widget target, Object? args}) {
-    return _navigatorKey.currentState!.push(
-      PageTransition(
-        child: target,
-        type: PageTransitionType.fade,
-        settings: RouteSettings(name: routeName, arguments: args),
-      ),
+  static PageRoute<T> _getRoute<T>(
+    Widget screen, {
+    bool fullscreenDialog = false,
+  }) {
+    return MaterialPageRoute(
+      builder: (c) => screen,
+      fullscreenDialog: fullscreenDialog,
+      settings: RouteSettings(name: screen.runtimeType.toString()),
     );
+  }
+
+  static Future<dynamic> push({
+    String routeName = '',
+    required Widget target,
+    Object? args,
+    bool rootNavigator = false,
+    bool fullscreendialog = false,
+  }) {
+    return _navigatorKey.currentState!
+        .push(_getRoute(target, fullscreenDialog: fullscreendialog));
   }
 
   //Navigate Push Replacement
 
-  static Future<dynamic> pushReplacement(
-      {String routeName = '', required Widget target, Object? args}) {
-    return _navigatorKey.currentState!.pushReplacement(
-      PageTransition(
-        child: target,
-        type: PageTransitionType.fade,
-        settings: RouteSettings(name: routeName, arguments: args),
-      ),
-    );
+  static Future<dynamic> pushReplacement({
+    String routeName = '',
+    required Widget target,
+    Object? args,
+    bool rootNavigator = false,
+    bool fullscreendialog = false,
+  }) {
+    return _navigatorKey.currentState!
+        .pushReplacement(_getRoute(target, fullscreenDialog: fullscreendialog));
   }
 
   //Navigate Push Until
 
   static Future<dynamic> pushUntil(
       {String routeName = '', required Widget target, Object? args}) {
-    return _navigatorKey.currentState!.pushAndRemoveUntil(
-        PageTransition(
-          child: target,
-          type: PageTransitionType.fade,
-        ),
-        (route) => false);
+    return _navigatorKey.currentState!
+        .pushAndRemoveUntil(SlideRoute(child: target), (route) => false);
   }
 
   //Pop Function
@@ -106,4 +112,39 @@ class NavigationService {
 
   static Future<bool> get mayBePop async =>
       await _navigatorKey.currentState!.maybePop();
+}
+
+class SlideRoute<T> extends PageRouteBuilder<T> {
+  ///
+  SlideRoute({
+    required this.child,
+    super.fullscreenDialog,
+    this.offset,
+  }) : super(
+          transitionDuration: const Duration(milliseconds: 500),
+          pageBuilder: (a, b, c) => child,
+          settings: RouteSettings(name: child.runtimeType.toString()),
+        );
+
+  ///
+  final Widget child;
+
+  ///
+  final Offset? offset;
+
+  @override
+  Widget buildTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    return SlideTransition(
+      position: Tween<Offset>(
+        begin: offset ?? const Offset(0, 1),
+        end: Offset.zero,
+      ).animate(animation),
+      child: child,
+    );
+  }
 }
