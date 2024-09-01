@@ -30,6 +30,8 @@ class CustomButton extends StatelessWidget {
   final double borderRadius;
   final ButtonVarient? buttonVarient;
   final Color? borderColor;
+  final Widget? prefixWidget;
+  final Widget? suffixWidget;
 
   final int? flex;
   const CustomButton({
@@ -57,6 +59,8 @@ class CustomButton extends StatelessWidget {
     this.borderRadius = 4,
     this.buttonVarient,
     this.borderColor,
+    this.prefixWidget,
+    this.suffixWidget,
   });
 
   @override
@@ -95,6 +99,7 @@ class CustomButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  if (prefixIcon == null && prefixWidget != null) prefixWidget!,
                   if (prefixIcon != null)
                     Container(
                       padding: EdgeInsets.only(right: 10.wp),
@@ -134,6 +139,7 @@ class CustomButton extends StatelessWidget {
                       ),
                     ],
                   ),
+                  if (suffixIcon == null && suffixWidget != null) suffixWidget!,
                   if (suffixIcon != null)
                     Container(
                       padding: EdgeInsets.only(left: 10.wp),
