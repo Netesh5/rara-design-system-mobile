@@ -63,7 +63,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () async {
                   await NavigationService.mayBePop;
                 },
-                backgroundColor: backButtonColor ?? colors.iconPrimary,
+                // backgroundColor: backButtonColor ?? colors.iconPrimary,
                 padding: 2,
                 icon: Icons.arrow_back,
                 iconColor: backButtonColor ?? colors.iconPrimary),
