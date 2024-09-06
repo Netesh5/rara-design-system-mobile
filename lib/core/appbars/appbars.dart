@@ -21,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerMiddle;
   final double? leftPadding;
   final double? rightPadding;
-  final double topPadding;
+  final double? topPadding;
   final bool showShadow;
   final Color? backButtonColor;
   const CustomAppBar({
@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackButton = true,
     this.leftPadding,
     this.rightPadding,
-    this.topPadding = 4,
+    this.topPadding,
     this.showShadow = true,
     this.backButtonColor,
   });
@@ -87,7 +87,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             padding: EdgeInsets.only(
               left: leftPadding ?? 10.wp,
               right: rightPadding ?? 10.wp,
-              top: MediaQuery.of(context).padding.top + topPadding,
+              top: topPadding ?? MediaQuery.of(context).padding.top,
             ),
             decoration: BoxDecoration(
               color: backgroundColor ?? theme.scaffoldBackgroundColor,
