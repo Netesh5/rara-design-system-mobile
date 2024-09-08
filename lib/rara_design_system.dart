@@ -106,7 +106,7 @@ class RaraApp extends StatelessWidget {
             checkerboardOffscreenLayers: checkerboardOffscreenLayers,
             checkerboardRasterCacheImages: checkerboardRasterCacheImages,
             color: color,
-            darkTheme: darkTheme,
+            // darkTheme: darkTheme,
             debugShowMaterialGrid: debugShowMaterialGrid,
             highContrastDarkTheme: highContrastDarkTheme,
             highContrastTheme: highContrastTheme,
