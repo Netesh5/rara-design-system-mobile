@@ -31,7 +31,7 @@ class ThemeCubit extends Cubit<ThemeData> {
     } else {
       log("Theme mode : Dark");
       themePrefs.save(data: ThemeMode.dark.name, key: '@theme');
-      emit(lightTheme ?? AppTheme.darkTheme);
+      emit(darkTheme ?? AppTheme.darkTheme);
     }
   }
 }
