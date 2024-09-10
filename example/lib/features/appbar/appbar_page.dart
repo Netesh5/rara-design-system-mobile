@@ -11,7 +11,7 @@ Scaffold appBar(BuildContext context) {
   return Scaffold(
     appBar: CustomAppBar(
       title:
-          context.knobs.string(label: "Title", initialValue: "App bar title"),
+          context.knobs.string(label: "Title  ", initialValue: "App bar title"),
       titleStyle: TextStyle(
           fontSize: context.knobs.double.input(
             label: "Font size",
