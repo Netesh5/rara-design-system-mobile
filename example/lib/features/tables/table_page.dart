@@ -9,10 +9,10 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 SfDataGrid buildTable(BuildContext context) {
   return SfDataGrid(
     allowSorting: true,
-    allowColumnsResizing: true,
-    allowColumnsDragging: true,
     frozenColumnsCount: 1,
-    autoExpandGroups: true,
+    allowColumnsDragging: true,
+    columnWidthMode: ColumnWidthMode.fitByCellValue,
+    columnWidthCalculationRange: ColumnWidthCalculationRange.allRows,
     source: EmployeeDataSource(employees: getEmployees()),
     columns: [
       GridColumn(
@@ -116,9 +116,16 @@ List<Employee> getEmployees() {
 }
 
 class Employee {
-  Employee(this.id, this.name, this.designation, this.salary);
+  Employee(
+    this.id,
+    this.name,
+    this.designation,
+    this.salary,
+    //this.address
+  );
   final int id;
   final String name;
   final String designation;
   final int salary;
+  //final String address;
 }
