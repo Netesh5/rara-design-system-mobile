@@ -6,71 +6,48 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
   name: 'Customizable',
   type: SfDataGrid,
 )
-SfDataGrid buildTable(BuildContext context) {
-  return SfDataGrid(
-    allowSorting: true,
-    frozenColumnsCount: 1,
-    allowColumnsDragging: true,
-    columnWidthMode: ColumnWidthMode.fitByCellValue,
-    columnWidthCalculationRange: ColumnWidthCalculationRange.allRows,
-    source: EmployeeDataSource(employees: getEmployees()),
-    columns: [
-      GridColumn(
-          columnName: 'id',
-          label: Container(
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.centerRight,
-              child: const Text(
-                'ID',
-              ))),
-      GridColumn(
-          columnName: 'name',
-          label: Container(
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.centerLeft,
-              child: const Text('Name'))),
-      GridColumn(
-          columnName: 'designation',
-          width: 120,
-          label: Container(
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.centerLeft,
-              child: const Text('Designation'))),
-      GridColumn(
-          columnName: 'salary',
-          label: Container(
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.centerRight,
-              child: const Text('Salary'))),
-    ],
-  );
+buildTable(BuildContext context) {
+  // return SfDataGrid(
+  //   // frozenColumnsCount: 1,
+  //   // columnWidthMode: isLargeScreen(context)
+  //   //     ? ColumnWidthMode.fill
+  //   //     : ColumnWidthMode.fitByCellValue,
+  //   // gridLinesVisibility: GridLinesVisibility.both,
+  //   // headerGridLinesVisibility: GridLinesVisibility.both,
+  //   // columnWidthCalculationRange: ColumnWidthCalculationRange.visibleRows,
+  //   source: BuildDataSource(
+  //       data: getEmployees()
+  //       .map<DataGridRow>((e) => DataGridRow(
+  //               cells: List.generate(getEmployees().length, (index) {
+  //             return DataGridCell(columnName: columnName[index], value: e.);
+  //           })))
+  //       .toList(),
+
+  //   // columns:List.generate(getEmployees().length, (index) {
+  //   //   return GridColumn(
+  //   //       columnName: columnName[index],
+  //   //       label: Container(
+  //   //           padding: const EdgeInsets.all(16.0),
+  //   //           alignment: Alignment.centerRight,
+  //   //           child: const columnName[index],),);
+  //   // })
+  // );
 }
 
-class EmployeeDataSource extends DataGridSource {
-  EmployeeDataSource({required List<Employee> employees}) {
-    _employees = employees
-        .map<DataGridRow>((e) => DataGridRow(cells: [
-              DataGridCell<int>(columnName: 'id', value: e.id),
-              DataGridCell<String>(columnName: 'name', value: e.name),
-              DataGridCell<String>(
-                  columnName: 'designation', value: e.designation),
-              DataGridCell<int>(columnName: 'salary', value: e.salary),
-            ]))
-        .toList();
-  }
+class BuildDataSource extends DataGridSource {
+  BuildDataSource({required this.data});
 
-  List<DataGridRow> _employees = [];
+  List<DataGridRow> data;
 
   @override
-  List<DataGridRow> get rows => _employees;
+  List<DataGridRow> get rows => data;
 
   @override
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
       return Container(
-        alignment: (dataGridCell.columnName == 'id' ||
-                dataGridCell.columnName == 'salary')
+        alignment: (dataGridCell.columnName == 'Address')
             ? Alignment.centerRight
             : Alignment.centerLeft,
         padding: const EdgeInsets.all(16.0),
@@ -82,50 +59,54 @@ class EmployeeDataSource extends DataGridSource {
 
 List<Employee> getEmployees() {
   return [
-    Employee(10001, 'James', 'Project Lead', 20000),
-    Employee(10002, 'Kathryn', 'Manager', 30000),
-    Employee(10003, 'Lara', 'Developer', 15000),
-    Employee(10004, 'Michael', 'Designer', 15000),
-    Employee(10005, 'Martin', 'Developer', 15000),
-    Employee(10006, 'Newberry', 'Developer', 15000),
-    Employee(10007, 'Balnc', 'Developer', 15000),
-    Employee(10008, 'Perry', 'Developer', 15000),
-    Employee(10009, 'Gable', 'Developer', 15000),
-    Employee(10010, 'Grimes', 'Developer', 15000),
-    Employee(10001, 'James', 'Project Lead', 20000),
-    Employee(10002, 'Kathryn', 'Manager', 30000),
-    Employee(10003, 'Lara', 'Developer', 15000),
-    Employee(10004, 'Michael', 'Designer', 15000),
-    Employee(10005, 'Martin', 'Developer', 15000),
-    Employee(10006, 'Newberry', 'Developer', 15000),
-    Employee(10007, 'Balnc', 'Developer', 15000),
-    Employee(10008, 'Perry asdasfasfasf adsfasfasdf', 'Developer', 15000),
-    Employee(10009, 'Gable', 'Developer', 15000),
-    Employee(10010, 'Grimes', 'Developer', 15000),
-    Employee(10001, 'James', 'Project Lead', 20000),
-    Employee(10002, 'Kathryn', 'Manager', 30000),
-    Employee(10003, 'Lara', 'Developer', 15000),
-    Employee(10004, 'Michael', 'Designer', 15000),
-    Employee(10005, 'Martin', 'Developer', 15000),
-    Employee(10006, 'Newberry', 'Developer', 15000),
-    Employee(10007, 'Balnc', 'Developer', 15000),
-    Employee(10008, 'Perry', 'Developer', 15000),
-    Employee(10009, 'Gable', 'Developer', 15000),
-    Employee(10010, 'Grimes', 'Developer', 15000)
+    Employee(10001, 'James', 'Project Lead', 20000, "asdfasfasdf"),
+    Employee(10002, 'Kathryn', 'Manager', 30000, "asdfasfasdf"),
+    Employee(10003, 'Lara', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10004, 'Michael', 'Designer', 15000, "asdfasfasdf"),
+    Employee(10005, 'Martin', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10006, 'Newberry', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10007, 'Balnc', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10008, 'Perry', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10009, 'Gable', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10010, 'Grimes', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10001, 'James', 'Project Lead', 20000, "asdfasfasdf"),
+    Employee(10002, 'Kathryn', 'Manager', 30000, "asdfasfasdf"),
+    Employee(10003, 'Lara', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10004, 'Michael', 'Designer', 15000, "asdfasfasdf"),
+    Employee(10005, 'Martin', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10006, 'Newberry', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10007, 'Balnc', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10008, 'Perry asdasfasfasf adsfasfasdf', 'Developer', 15000,
+        "asdfasfasdf"),
+    Employee(10009, 'Gable', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10010, 'Grimes', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10001, 'James', 'Project Lead', 20000, "asdfasfasdf"),
+    Employee(10002, 'Kathryn', 'Manager', 30000, "asdfasfasdf"),
+    Employee(10003, 'Lara', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10004, 'Michael', 'Designer', 15000, "asdfasfasdf"),
+    Employee(10005, 'Martin', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10006, 'Newberry', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10007, 'Balnc', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10008, 'Perry', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10009, 'Gable', 'Developer', 15000, "asdfasfasdf"),
+    Employee(10010, 'Grimes', 'Developer', 15000, "asdfasfasdf")
   ];
 }
 
 class Employee {
-  Employee(
-    this.id,
-    this.name,
-    this.designation,
-    this.salary,
-    //this.address
-  );
+  Employee(this.id, this.name, this.designation, this.salary, this.address);
   final int id;
   final String name;
   final String designation;
   final int salary;
-  //final String address;
+  final String address;
+}
+
+isLargeScreen(BuildContext context) {
+  final _width = MediaQuery.of(context).size.width;
+  if (_width > 600) {
+    return true;
+  } else {
+    return false;
+  }
 }
