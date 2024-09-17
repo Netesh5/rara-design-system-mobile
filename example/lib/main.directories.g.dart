@@ -45,18 +45,18 @@ final directories = <_i1.WidgetbookNode>[
           ),
         ],
       ),
-    ],
-  ),
-  _i1.WidgetbookFolder(
-    name: 'datagrid_widget',
-    children: [
-      _i1.WidgetbookLeafComponent(
-        name: 'SfDataGrid',
-        useCase: _i1.WidgetbookUseCase(
-          name: 'Customizable',
-          builder: _i4.buildTable,
-        ),
-      )
+      _i1.WidgetbookFolder(
+        name: 'tables',
+        children: [
+          _i1.WidgetbookLeafComponent(
+            name: 'CustomTable',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Customizable',
+              builder: _i4.buildTable,
+            ),
+          )
+        ],
+      ),
     ],
   ),
   _i1.WidgetbookFolder(

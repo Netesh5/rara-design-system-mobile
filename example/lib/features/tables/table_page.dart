@@ -1,60 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:rara_design_system/components/tables/custom_table.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(
-  name: 'Customizable',
-  type: SfDataGrid,
-)
-buildTable(BuildContext context) {
-  // return SfDataGrid(
-  //   // frozenColumnsCount: 1,
-  //   // columnWidthMode: isLargeScreen(context)
-  //   //     ? ColumnWidthMode.fill
-  //   //     : ColumnWidthMode.fitByCellValue,
-  //   // gridLinesVisibility: GridLinesVisibility.both,
-  //   // headerGridLinesVisibility: GridLinesVisibility.both,
-  //   // columnWidthCalculationRange: ColumnWidthCalculationRange.visibleRows,
-  //   source: BuildDataSource(
-  //       data: getEmployees()
-  //       .map<DataGridRow>((e) => DataGridRow(
-  //               cells: List.generate(getEmployees().length, (index) {
-  //             return DataGridCell(columnName: columnName[index], value: e.);
-  //           })))
-  //       .toList(),
-
-  //   // columns:List.generate(getEmployees().length, (index) {
-  //   //   return GridColumn(
-  //   //       columnName: columnName[index],
-  //   //       label: Container(
-  //   //           padding: const EdgeInsets.all(16.0),
-  //   //           alignment: Alignment.centerRight,
-  //   //           child: const columnName[index],),);
-  //   // })
-  // );
-}
-
-class BuildDataSource extends DataGridSource {
-  BuildDataSource({required this.data});
-
-  List<DataGridRow> data;
-
-  @override
-  List<DataGridRow> get rows => data;
-
-  @override
-  DataGridRowAdapter? buildRow(DataGridRow row) {
-    return DataGridRowAdapter(
-        cells: row.getCells().map<Widget>((dataGridCell) {
-      return Container(
-        alignment: (dataGridCell.columnName == 'Address')
-            ? Alignment.centerRight
-            : Alignment.centerLeft,
-        padding: const EdgeInsets.all(16.0),
-        child: Text(dataGridCell.value.toString()),
-      );
-    }).toList());
-  }
+@widgetbook.UseCase(name: 'Customizable', type: CustomTable)
+CustomTable buildTable(BuildContext context) {
+  return CustomTable(
+    source: BuildDataSource(
+        data: getEmployees()
+            .map(
+              (e) => DataGridRow(
+                cells: [
+                  DataGridCell<int>(columnName: e.id.toString(), value: e.id),
+                  DataGridCell<String>(
+                      columnName: e.name.toString(), value: e.name),
+                  DataGridCell<String>(
+                      columnName: e.designation.toString(),
+                      value: e.designation),
+                  DataGridCell<int>(
+                      columnName: e.salary.toString(), value: e.salary),
+                  DataGridCell<String>(
+                      columnName: e.address.toString(), value: e.address),
+                ],
+              ),
+            )
+            .toList()),
+    columns: const ["Id", "Name", "Desgination", "Address", "Salary"],
+  );
 }
 
 List<Employee> getEmployees() {
