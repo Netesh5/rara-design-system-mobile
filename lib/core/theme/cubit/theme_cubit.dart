@@ -9,7 +9,9 @@ import 'package:rara_design_system/core/theme/theme.dart';
 class ThemeCubit extends Cubit<ThemeData> {
   ThemeCubit({
     required this.themePrefs,
-  }) : super(AppTheme.lightTheme);
+    ThemeData? lightTheme,
+    ThemeData? darkTheme,
+  }) : super(lightTheme ?? AppTheme.lightTheme);
   final ThemePrefs themePrefs;
 
   init({ThemeData? lightTheme, ThemeData? darkTheme}) async {
