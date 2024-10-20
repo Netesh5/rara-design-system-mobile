@@ -91,7 +91,8 @@ class RaraApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => rg<ThemeCubit>()..init(),
+      create: (_) =>
+          rg<ThemeCubit>()..init(lightTheme: theme, darkTheme: darkTheme),
       child: BlocBuilder<ThemeCubit, ThemeData>(
         builder: (context, appTheme) {
           return MaterialApp(
